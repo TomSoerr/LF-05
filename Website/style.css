@@ -1,0 +1,216 @@
+/* atkinson-hyperlegible-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Atkinson Hyperlegible";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/atkinson-hyperlegible-v10-latin-regular.eot"); /* IE9 Compat Modes */
+  src: url("./fonts/atkinson-hyperlegible-v10-latin-regular.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("./fonts/atkinson-hyperlegible-v10-latin-regular.woff2")
+      format("woff2"),
+    /* Super Modern Browsers */
+      url("./fonts/atkinson-hyperlegible-v10-latin-regular.woff") format("woff"),
+    /* Modern Browsers */
+      url("./fonts/atkinson-hyperlegible-v10-latin-regular.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */
+      url("./fonts/atkinson-hyperlegible-v10-latin-regular.svg#AtkinsonHyperlegible")
+      format("svg"); /* Legacy iOS */
+}
+
+/* atkinson-hyperlegible-italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Atkinson Hyperlegible";
+  font-style: italic;
+  font-weight: 400;
+  src: url("./fonts/atkinson-hyperlegible-v10-latin-italic.eot"); /* IE9 Compat Modes */
+  src: url("./fonts/atkinson-hyperlegible-v10-latin-italic.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("./fonts/atkinson-hyperlegible-v10-latin-italic.woff2")
+      format("woff2"),
+    /* Super Modern Browsers */
+      url("./fonts/atkinson-hyperlegible-v10-latin-italic.woff") format("woff"),
+    /* Modern Browsers */
+      url("./fonts/atkinson-hyperlegible-v10-latin-italic.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */
+      url("./fonts/atkinson-hyperlegible-v10-latin-italic.svg#AtkinsonHyperlegible")
+      format("svg"); /* Legacy iOS */
+}
+
+/* atkinson-hyperlegible-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Atkinson Hyperlegible";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./fonts/atkinson-hyperlegible-v10-latin-700.eot"); /* IE9 Compat Modes */
+  src: url("./fonts/atkinson-hyperlegible-v10-latin-700.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("./fonts/atkinson-hyperlegible-v10-latin-700.woff2")
+      format("woff2"),
+    /* Super Modern Browsers */
+      url("./fonts/atkinson-hyperlegible-v10-latin-700.woff") format("woff"),
+    /* Modern Browsers */ url("./fonts/atkinson-hyperlegible-v10-latin-700.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */
+      url("./fonts/atkinson-hyperlegible-v10-latin-700.svg#AtkinsonHyperlegible")
+      format("svg"); /* Legacy iOS */
+}
+
+/* atkinson-hyperlegible-700italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Atkinson Hyperlegible";
+  font-style: italic;
+  font-weight: 700;
+  src: url("./fonts/atkinson-hyperlegible-v10-latin-700italic.eot"); /* IE9 Compat Modes */
+  src: url("./fonts/atkinson-hyperlegible-v10-latin-700italic.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("./fonts/atkinson-hyperlegible-v10-latin-700italic.woff2")
+      format("woff2"),
+    /* Super Modern Browsers */
+      url("./fonts/atkinson-hyperlegible-v10-latin-700italic.woff")
+      format("woff"),
+    /* Modern Browsers */
+      url("./fonts/atkinson-hyperlegible-v10-latin-700italic.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */
+      url("./fonts/atkinson-hyperlegible-v10-latin-700italic.svg#AtkinsonHyperlegible")
+      format("svg"); /* Legacy iOS */
+}
+
+/* raleway-600 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/raleway-v28-latin-600.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/raleway-v28-latin-600.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("../fonts/raleway-v28-latin-600.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("../fonts/raleway-v28-latin-600.woff")
+      format("woff"),
+    /* Modern Browsers */ url("../fonts/raleway-v28-latin-600.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */ url("../fonts/raleway-v28-latin-600.svg#Raleway")
+      format("svg"); /* Legacy iOS */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+/* keine Angaben in px */
+
+:root {
+  --fallback-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --text-farbe: #3f3f3f;
+  --hintergrund-farbe: #fffefa;
+  --primaer-farbe: #1e7fcb;
+  --sekundaer-farbe: #9cbfa7;
+  --akzent-farbe: #ff5a5a;
+  --seiten-margin: 3rem;
+  --abstand: 2rem;
+  --nav-hoehe: 5rem;
+}
+
+body {
+  font-family: "Atkinson Hyperlegible", var(--fallback-font);
+  line-height: 1.4;
+  min-height: 100vh;
+}
+
+/* NAV BAR */
+
+nav {
+  background-color: var(--text-farbe);
+  color: var(--hintergrund-farbe);
+  height: var(--nav-hoehe);
+  display: flex;
+  justify-content: space-between;
+  place-items: center;
+  padding: 0 var(--seiten-margin);
+  gap: var(--abstand);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-family: "Raleway", var(--fallback-font);
+  font-weight: 600;
+}
+
+nav > ul {
+  display: contents;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  list-style: none;
+  position: relative;
+}
+
+a {
+  color: var(--hintergrund-farbe);
+  text-decoration: none;
+  display: block;
+}
+
+a:hover {
+  color: var(--akzent-farbe);
+}
+
+nav li a + ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 50%;
+  transform: translateX(50%);
+  background-color: var(--text-farbe);
+  padding: calc(var(--abstand) / 1.5);
+  margin: 0;
+  flex-direction: column;
+  gap: calc(var(--abstand) / 1.5);
+  text-align: center;
+  width: max-content;
+}
+
+nav li:hover > a + ul {
+  display: flex;
+}
+
+nav a:first-child {
+  margin-right: auto;
+}
+
+main > * {
+  padding: var(--abstand) var(--seiten-margin);
+}
+
+main {
+  margin-top: var(--nav-hoehe);
+  min-height: calc(100vh - var(--nav-hoehe));
+}
+
+/* FOOTER */
+
+footer {
+  background-color: var(--text-farbe);
+  color: var(--hintergrund-farbe);
+  padding: var(--abstand) var(--seiten-margin);
+  font-family: "Raleway", var(--fallback-font);
+  font-weight: 600;
+}
