@@ -124,6 +124,7 @@ img {
   --seiten-margin: 3rem;
   --abstand: 2rem;
   --nav-hoehe: 5rem;
+  --border-radius: 0.5rem;
 }
 
 body {
@@ -163,13 +164,13 @@ nav li {
   position: relative;
 }
 
-a {
+nav a {
   color: var(--hintergrund-farbe);
   text-decoration: none;
   display: block;
 }
 
-a:hover {
+nav a:hover {
   color: var(--akzent-farbe);
 }
 
@@ -196,15 +197,6 @@ nav a:first-child {
   margin-right: auto;
 }
 
-main > * {
-  padding: var(--abstand) var(--seiten-margin);
-}
-
-main {
-  margin-top: var(--nav-hoehe);
-  min-height: calc(100vh - var(--nav-hoehe));
-}
-
 /* FOOTER */
 
 footer {
@@ -213,4 +205,89 @@ footer {
   padding: var(--abstand) var(--seiten-margin);
   font-family: "Raleway", var(--fallback-font);
   font-weight: 600;
+}
+
+/* allgemain */
+body {
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+}
+
+main {
+  display: contents;
+}
+
+main > section {
+  display: contents;
+}
+
+/* Segeln und Biken am Gardasee */
+
+.ff-sub {
+  grid-template-rows: 40vh;
+  grid-auto-rows: auto;
+}
+
+/* ff -> Ferienfreizeiten */
+.ff-sub-hero-img {
+  grid-area: 1 / 1 / 3 / -1;
+  background-color: red;
+  width: 100%;
+  background-image: url(./img/hero-segeln-biken.jpg);
+  background-position: center top;
+  background-size: cover;
+}
+
+.ff-sub section:nth-of-type(1) h1 {
+  color: var(--hintergrund-farbe);
+  grid-area: 2 / 2 / 3 / 6;
+}
+
+.ff-sub section:nth-of-type(1) h2 {
+  grid-area: 3 / 2 / 4 / 6;
+}
+
+.ff-sub section:nth-of-type(1) .ff-meter {
+  grid-area: 4 / 2 / 5 / 5;
+}
+
+.ff-sub section:nth-of-type(1) p {
+  grid-area: 5 / 2 / 6 / 5;
+}
+
+.ff-sub section:nth-of-type(1) .ff-sub-anmeldung {
+  grid-area: 6 / 2 / 7 / 4;
+}
+
+.ff-sub section:nth-of-type(1) section {
+  grid-area: 2 / 7 / 7 / -3;
+  background-color: var(--primaer-farbe);
+  color: var(--hintergrund-farbe);
+  padding: var(--abstand);
+  border-radius: var(--border-radius);
+}
+
+.ff-sub section:nth-of-type(2) img {
+  grid-area: 7 / 2 / 8 / -2;
+  height: 30rem;
+  background-color: gray;
+  margin: 0 5rem;
+  display: block;
+}
+
+.ff-sub section:nth-of-type(3) {
+  display: block;
+  grid-area: 8 / 3 / 9 / -3;
+}
+
+.ff-sub tr {
+  border-bottom: 1px solid #000;
+}
+
+.ff-sub table {
+  width: 100%;
+}
+
+.ff-sub table tr td:first-child {
+  padding-right: 6rem;
 }
