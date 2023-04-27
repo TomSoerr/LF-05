@@ -6,10 +6,11 @@
     <title>Segeln & Biken</title>
     <link rel="stylesheet" href="../normalize.css" />
     <link rel="stylesheet" href="../style.css" />
+    <script src="../script.js" defer></script>
   </head>
   <body class="ff-sub">
     <nav>
-      <a href="../index.html"><img src="" alt="Logo" /></a>
+      <a href="../index.html"><img src="../img/logo.svg" alt="Logo" /></a>
       <ul>
         <li>
           <a href="../ferienfreizeiten.html">Ferienfreizeit &#x25BC;</a>
@@ -88,7 +89,57 @@
         <a class="ff-sub-anmeldung" href="../kontakt.html">Anmeldung</a>
       </section>
       <section>
-        <img src="" alt="" />
+        <button id="ff-sub-carrousel-left">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="48"
+            viewBox="-150 96 960 960"
+            width="48"
+          >
+            <path
+              d="M384 960 33 609q-7-7-10.5-15.5T19 576q0-9 3.5-17.5T33 543l351-351q16-16 40-16.5t40 15.5q17 17 17 41t-17 41L161 576l303 303q17 17 17 40.5T465 959q-17 17-41 17t-40-16Z"
+            />
+          </svg>
+        </button>
+        <div id="ff-sub-carrousel-wrapper">
+          <div
+            id="ff-sub-carrousel-1"
+            role="img"
+            aria-label="Drei Segelschiffe auf Gardasee"
+          ></div>
+          <div
+            id="ff-sub-carrousel-2"
+            role="img"
+            aria-label="Segelschiff das ein Manöver macht"
+          ></div>
+          <div
+            id="ff-sub-carrousel-3"
+            role="img"
+            aria-label="Fahrrad auf einem Berg mit Sonnenuntergang"
+          ></div>
+          <div
+            id="ff-sub-carrousel-4"
+            role="img"
+            aria-label="Mountainbiker im Wald"
+          ></div>
+          <div
+            id="ff-sub-carrousel-5"
+            role="img"
+            aria-label="Bild vom Gardasee"
+          ></div>
+        </div>
+        <button id="ff-sub-carrousel-right">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="48"
+            viewBox="0 96 960 960"
+            width="48"
+          >
+            <path
+              d="M264 957q-16-17-16.5-40t16.5-40l303-303-303-303q-16-16-17-39.5t16-40.5q16-17 40-17.5t40 16.5l352 351q7 7 10.5 15.5T709 574q0 9-3.5 17.5T695 607L344 958q-16 16-39.5 16T264 957Z"
+            />
+          </svg>
+        </button>
       </section>
       <section>
         <h2>Programm:</h2>
@@ -144,5 +195,11 @@
         </table>
       </section>
     </main>
+    <footer>
+      <ul>
+        <li><a href="./impressum.html">Impressum</a></li>
+        <li><a href="./kontakt.html">Kontakt</a></li>
+      </ul>
+    </footer>
   </body>
 </html>
