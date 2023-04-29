@@ -1,8 +1,8 @@
 // ferienfreizeiten > segeln und biken > carrousel slider
 
-const slider = document.querySelector("#ff-sub-carrousel-wrapper");
-const leftArrow = document.querySelector("#ff-sub-carrousel-left");
-const rightArrow = document.querySelector("#ff-sub-carrousel-right");
+const slider = document.querySelector(".ff-sub #ff-sub-carrousel-wrapper");
+const leftArrow = document.querySelector(".ff-sub .img-btn:first-of-type");
+const rightArrow = document.querySelector(".ff-sub .img-btn:last-of-type");
 let sliderSliding = false;
 
 rightArrow.addEventListener("click", () => {
