@@ -136,11 +136,13 @@ img {
     Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   --text-farbe: #3f3f3f;
   --hintergrund-farbe: #fffefa;
-  --primaer-farbe: #1e7fcb;
-  --sekundaer-farbe: #9cbfa7;
-  --akzent-farbe: #ff5a5a;
+  --primaer-farbe: #ded4c5;
+  --sekundaer-farbe: #307b69;
+  --akzent-farbe-2: #d48c8c;
+  --akzent-farbe-1: #a0d3de;
   --seiten-margin: 3rem;
   --abstand: 2rem;
+  --spacer: calc(var(--abstand) * 6);
   --nav-hoehe: 5rem;
   --border-radius: 0.5rem;
   --section: 2.313rem;
@@ -244,7 +246,29 @@ footer a {
 body {
   display: grid;
   grid-template-columns: repeat(13, 1fr);
-  gap: var(--abstand);
+  column-gap: var(--abstand);
+}
+
+[role="img"] {
+  background-position: center;
+  background-size: cover;
+}
+
+.btn-link {
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  width: fit-content;
+  background-color: var(--sekundaer-farbe);
+  border-radius: 1.5rem;
+  padding: 0 1.5rem;
+
+  color: var(--hintergrund-farbe);
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  background-color: var(--akzent-farbe-2);
 }
 
 main {
@@ -273,19 +297,42 @@ h3 {
   font-weight: 600;
 }
 
-/* Segeln und Biken am Gardasee */
+.img-btn {
+  appearance: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  align-self: center;
+  background-color: var(--hintergrund-farbe);
+  width: 100%;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.img-btn svg {
+  height: 70%;
+  width: 70%;
+  display: block;
+  fill: var(--sekundaer-farbe);
+}
+
+.img-btn:hover svg {
+  fill: var(--akzent-farbe-2);
+}
+
+/* Segeln und Biken am Gardasee .ff-sub */
+/* ff -> Ferienfreizeiten */
 
 .ff-sub {
   grid-template-rows:
-    40vh repeat(5, auto) calc(3 * var(--abstand)) 40vh calc(3 * var(--abstand))
-    auto calc(3 * var(--abstand)) auto;
+    40vh repeat(5, auto) var(--spacer) 40vh var(--spacer)
+    auto var(--spacer) auto;
   grid-auto-rows: auto;
 }
 
-/* ff -> Ferienfreizeiten */
 .ff-sub-hero-img {
   grid-area: 1 / 1 / 3 / -1;
-  background-color: red;
   width: 100%;
   background-image: url(./img/hero-segeln-biken.jpg);
   background-position: center top;
@@ -309,7 +356,7 @@ h3 {
   grid-area: 5 / 2 / 6 / 5;
 }
 
-.ff-sub section:nth-of-type(1) .ff-sub-anmeldung {
+.ff-sub section:nth-of-type(1) .btn-link {
   grid-area: 6 / 2 / 7 / 4;
 }
 
@@ -385,8 +432,6 @@ h3 {
   height: 100%;
   width: 100%;
   grid-row: 1;
-  background-position: center;
-  background-size: cover;
 }
 
 .ff-sub section:nth-of-type(2) div div:nth-of-type(1) {
@@ -437,22 +482,6 @@ h3 {
   grid-column: 2 / 3;
 }
 
-.ff-sub section:nth-of-type(2) > button {
-  appearance: none;
-  border: none;
-  margin: 0;
-  padding: 0;
-  align-self: center;
-  background-color: var(--hintergrund-farbe);
-  width: 100%;
-  aspect-ratio: 1;
-}
-.ff-sub section:nth-of-type(2) > button svg {
-  height: 100%;
-  width: 100%;
-  display: block;
-}
-
 .ff-sub section:nth-of-type(2) button:last-of-type {
   grid-column: 12 / 13;
 }
@@ -474,4 +503,205 @@ h3 {
 
 .ff-sub table tr td:first-child {
   padding-right: 6rem;
+}
+
+/* Ferienfreizeiten .ff */
+
+.ff {
+  grid-template-rows:
+    calc(var(--nav-hoehe) + calc(var(--abstand) * 2)) calc(var(--abstand) * 2) calc(
+      var(--abstand) * 2
+    )
+    calc(100vh - var(--nav-hoehe) - 5 * calc(var(--abstand) * 2))
+    calc(var(--abstand) * 2) calc(var(--abstand) * 2)
+    var(--spacer) calc(100vh - var(--nav-hoehe) - 2 * var(--abstand)) var(
+      --spacer
+    )
+    auto var(--spacer)
+    auto;
+}
+
+.ff main > section:nth-of-type(1) .ff-background {
+  background-color: var(--primaer-farbe);
+  /* erst die x Linie dann die y Linie */
+  grid-area: 1 / 1 / 7 / 9;
+  border-bottom-right-radius: calc(8 * var(--border-radius));
+}
+
+.ff main > section:nth-of-type(1) .ff-hero-text {
+  grid-area: 4 / 2 / 5 / 6;
+}
+
+.ff main > section:nth-of-type(1) #ff-hero-img-1 {
+  grid-area: 2 / 7 / 5 / 10;
+
+  background-color: black;
+}
+
+.ff main > section:nth-of-type(1) #ff-hero-img-2 {
+  grid-area: 3 / 10 / 6 / 13;
+  background-color: black;
+}
+
+.ff main > section:nth-of-type(2) > * {
+  grid-row: 8 / 9;
+}
+
+.ff main > section:nth-of-type(2) .img-btn:first-of-type {
+  grid-column: 2 / 3;
+}
+
+.ff main > section:nth-of-type(2) #ff-slider-img-1 {
+  grid-column: 3 / 7;
+  background-color: black;
+}
+
+.ff main > section:nth-of-type(2) .img-btn:last-of-type {
+  grid-column: 7 / 8;
+}
+
+.ff main > section:nth-of-type(2) .ff-section-text {
+  grid-column: 8 / -2;
+}
+
+.ff main > section:nth-of-type(3) {
+  display: block;
+  grid-row: 10;
+  grid-column: 2 / -2;
+}
+
+.ff main > section:nth-of-type(3) > section {
+  display: grid;
+  column-gap: var(--abstand);
+  grid-template-columns: repeat(11, 1fr);
+  border: solid medium var(--sekundaer-farbe);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.ff main > section:nth-of-type(3) .angebot p svg {
+  height: 1.4rem;
+  transform: translateY(0.2rem);
+  fill: var(--akzent-farbe-1);
+}
+
+.ff main > section:nth-of-type(3) > section > h3,
+.ff main > section:nth-of-type(3) > section > p,
+.ff main > section:nth-of-type(3) > section > a {
+  grid-column: 1 / 5;
+  margin: 0 0 0 var(--abstand);
+}
+
+.ff main > section:nth-of-type(3) > section > h3 {
+  font-size: var(--subsection);
+  font-weight: 400;
+  margin-top: var(--abstand);
+}
+
+.ff main > section:nth-of-type(3) > section > p:first-of-type {
+  font-size: var(--subsection);
+  margin-bottom: var(--abstand);
+}
+
+.ff main > section:nth-of-type(3) > section > p:last-of-type {
+  grid-column: 3 / span 2;
+  font-size: var(--subsection);
+  margin: var(--abstand) 0 0 0;
+}
+
+.ff main > section:nth-of-type(3) > section > div {
+  grid-column: 3 / -1;
+  display: flex;
+  gap: var(--abstand);
+  padding: calc(var(--abstand) / 2) var(--abstand) var(--abstand) 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ff main > section:nth-of-type(3) .angebot {
+  border: medium solid var(--sekundaer-farbe);
+  padding: calc(var(--abstand) / 2);
+  max-width: 18rem;
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+}
+
+.ff main > section:nth-of-type(3) .angebot p {
+  margin: 0 0 calc(var(--abstand) / 2);
+}
+
+.ff main > section:nth-of-type(3) .angebot p:last-of-type {
+  margin-top: auto;
+  font-size: var(--subsection);
+  font-family: "Raleway", var(--fallback-font);
+  font-weight: 600;
+}
+
+.ff main > section:nth-of-type(3) .angebot div[role="img"] {
+  stroke: var(--sekundaer-farbe);
+  fill: none;
+  width: 70%;
+  align-self: end;
+}
+
+.ff main > section:nth-of-type(3) .angebot .btn-link {
+  align-self: end;
+}
+
+.ff main > section:nth-of-type(3) .angebot.active {
+  border-color: var(--akzent-farbe-2);
+  max-width: 24rem;
+}
+
+.ff main > section:nth-of-type(3) .angebot.active p svg {
+  fill: var(--akzent-farbe-2);
+  height: 1.6rem;
+  transform: translateY(0.3rem);
+}
+
+.ff main > section:nth-of-type(3) .angebot.active div[role="img"] {
+  stroke: var(--akzent-farbe-2);
+  width: 80%;
+}
+
+.ff main > section:nth-of-type(3) .angebot.active p:last-of-type {
+  font-size: var(--section);
+}
+
+.ff main > section:nth-of-type(3) .tabs button {
+  appearance: none;
+  padding: 1rem 1.5rem;
+  border: none;
+  margin: 0;
+  background-color: var(--hintergrund-farbe);
+  border-top: medium solid var(--sekundaer-farbe);
+  border-left: medium solid var(--sekundaer-farbe);
+  cursor: pointer;
+  font-size: var(--subsubsection);
+}
+
+.ff main > section:nth-of-type(3) .tabs button:first-child {
+  border-top-left-radius: var(--border-radius);
+}
+
+.ff main > section:nth-of-type(3) .tabs button:last-child {
+  border-top-right-radius: var(--border-radius);
+  border-right: medium solid var(--sekundaer-farbe);
+}
+
+.ff main > section:nth-of-type(3) .tabs button.active {
+  border-color: var(--akzent-farbe-2);
+  font-size: var(--subsection);
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  border-right: medium solid var(--akzent-farbe-2);
+}
+
+.ff main > section:nth-of-type(3) .tabs button.active + button {
+  border-left: none;
+}
+
+.ff main > section:nth-of-type(3) .tabs {
+  display: flex;
+  align-items: end;
 }
