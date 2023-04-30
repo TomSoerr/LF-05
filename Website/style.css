@@ -571,11 +571,39 @@ h3 {
 }
 
 .ff main > section:nth-of-type(3) > section {
-  display: grid;
+  display: none;
   column-gap: var(--abstand);
   grid-template-columns: repeat(11, 1fr);
-  border: solid medium var(--sekundaer-farbe);
+  grid-template-rows: repeat(4, auto) 1fr;
+  border: solid 0.25rem var(--sekundaer-farbe);
   border-radius: 0 0 var(--border-radius) var(--border-radius);
+  min-height: 65vh;
+  animation: fade-in 0.5s ease-in-out forwards;
+}
+
+.ff main > section:nth-of-type(3) > section.active,
+.ff main > section:nth-of-type(3) > section.fade-out {
+  display: grid;
+}
+
+.ff main > section:nth-of-type(3) > section.active * {
+  animation: fade-in 0.2s ease-in-out forwards;
+}
+
+.ff main > section:nth-of-type(3) > section.fade-out * {
+  animation: fade-out 0.2s ease-in-out forwards;
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
 }
 
 .ff main > section:nth-of-type(3) .angebot p svg {
@@ -605,7 +633,7 @@ h3 {
 .ff main > section:nth-of-type(3) > section > p:last-of-type {
   grid-column: 3 / span 2;
   font-size: var(--subsection);
-  margin: var(--abstand) 0 0 0;
+  margin: 0;
 }
 
 .ff main > section:nth-of-type(3) > section > div {
@@ -618,12 +646,11 @@ h3 {
 }
 
 .ff main > section:nth-of-type(3) .angebot {
-  border: medium solid var(--sekundaer-farbe);
+  border: 0.25rem solid var(--sekundaer-farbe);
   padding: calc(var(--abstand) / 2);
-  max-width: 18rem;
   border-radius: var(--border-radius);
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  height: 75%;
   flex: 1 1 0;
 }
 
@@ -639,30 +666,37 @@ h3 {
 }
 
 .ff main > section:nth-of-type(3) .angebot div[role="img"] {
+  overflow: hidden;
+  max-width: 13rem;
+  justify-self: end;
+}
+
+.ff main > section:nth-of-type(3) .angebot div[role="img"] svg {
+  width: 100%;
   stroke: var(--sekundaer-farbe);
   fill: none;
-  width: 70%;
-  align-self: end;
+  height: 100%;
+  aspect-ratio: 1 / 1;
 }
 
 .ff main > section:nth-of-type(3) .angebot .btn-link {
-  align-self: end;
+  justify-self: end;
 }
 
 .ff main > section:nth-of-type(3) .angebot.active {
   border-color: var(--akzent-farbe-2);
-  max-width: 24rem;
+  flex: 1.3 1.3 0;
+  height: 100%;
 }
 
 .ff main > section:nth-of-type(3) .angebot.active p svg {
   fill: var(--akzent-farbe-2);
-  height: 1.6rem;
-  transform: translateY(0.3rem);
+  height: 1.9rem;
+  transform: translateY(0.4rem);
 }
 
-.ff main > section:nth-of-type(3) .angebot.active div[role="img"] {
+.ff main > section:nth-of-type(3) .angebot.active div[role="img"] svg {
   stroke: var(--akzent-farbe-2);
-  width: 80%;
 }
 
 .ff main > section:nth-of-type(3) .angebot.active p:last-of-type {
@@ -675,10 +709,11 @@ h3 {
   border: none;
   margin: 0;
   background-color: var(--hintergrund-farbe);
-  border-top: medium solid var(--sekundaer-farbe);
-  border-left: medium solid var(--sekundaer-farbe);
+  border-top: 0.25rem solid var(--sekundaer-farbe);
+  border-left: 0.25rem solid var(--sekundaer-farbe);
   cursor: pointer;
   font-size: var(--subsubsection);
+  transition: all 0.2s ease-in-out;
 }
 
 .ff main > section:nth-of-type(3) .tabs button:first-child {
@@ -687,14 +722,16 @@ h3 {
 
 .ff main > section:nth-of-type(3) .tabs button:last-child {
   border-top-right-radius: var(--border-radius);
-  border-right: medium solid var(--sekundaer-farbe);
+  border-right: 0.25rem solid var(--sekundaer-farbe);
 }
 
 .ff main > section:nth-of-type(3) .tabs button.active {
   border-color: var(--akzent-farbe-2);
   font-size: var(--subsection);
   border-radius: var(--border-radius) var(--border-radius) 0 0;
-  border-right: medium solid var(--akzent-farbe-2);
+  border-right: 0.25rem solid var(--akzent-farbe-2);
+  border-bottom: 0.25rem solid var(--akzent-farbe-2);
+  transform: translateY(0.25rem);
 }
 
 .ff main > section:nth-of-type(3) .tabs button.active + button {
@@ -704,4 +741,5 @@ h3 {
 .ff main > section:nth-of-type(3) .tabs {
   display: flex;
   align-items: end;
+  height: 6rem;
 }
