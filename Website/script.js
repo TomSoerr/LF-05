@@ -1,33 +1,44 @@
-// ferienfreizeiten > segeln und biken > carrousel slider
+const sliders = [
+  {
+    // ferienfreizeiten > slider
+    slider: document.querySelector(".ff #ff-slider"),
+    leftArrow: document.querySelector(".ff .img-btn:first-of-type"),
+    rightArrow: document.querySelector(".ff .img-btn:last-of-type"),
+  },
+  {
+    // ferienfreizeiten > segeln und biken > carrousel slider
+    slider: document.querySelector(".ff-sub #ff-sub-carrousel-wrapper"),
+    leftArrow: document.querySelector(".ff-sub .img-btn:first-of-type"),
+    rightArrow: document.querySelector(".ff-sub .img-btn:last-of-type"),
+  },
+];
 
-const slider = document.querySelector(".ff-sub #ff-sub-carrousel-wrapper");
-const leftArrow = document.querySelector(".ff-sub .img-btn:first-of-type");
-const rightArrow = document.querySelector(".ff-sub .img-btn:last-of-type");
-let sliderSliding = false;
+sliders.forEach((sliderObj) => {
+  const [slider, leftArrow, rightArrow] = Object.values(sliderObj);
+  if (slider != null) {
+    rightArrow.addEventListener("click", () => {
+      sliderSliding = true;
+      slider.classList.add("right");
+      const first = slider.firstElementChild;
+      setTimeout(() => {
+        slider.appendChild(first);
+        slider.classList.remove("right");
+        sliderSliding = false;
+      }, 500);
+    });
 
-if (slider != null) {
-  rightArrow.addEventListener("click", () => {
-    sliderSliding = true;
-    slider.classList.add("right");
-    const first = slider.firstElementChild;
-    setTimeout(() => {
-      slider.appendChild(first);
-      slider.classList.remove("right");
-      sliderSliding = false;
-    }, 505);
-  });
-
-  leftArrow.addEventListener("click", () => {
-    slider.classList.add("left");
-    const first = slider.firstElementChild;
-    const last = slider.lastElementChild;
-    setTimeout(() => {
-      slider.insertBefore(last, first);
-      slider.classList.remove("left");
-      sliderSliding = false;
-    }, 505);
-  });
-}
+    leftArrow.addEventListener("click", () => {
+      slider.classList.add("left");
+      const first = slider.firstElementChild;
+      const last = slider.lastElementChild;
+      setTimeout(() => {
+        slider.insertBefore(last, first);
+        slider.classList.remove("left");
+        sliderSliding = false;
+      }, 500);
+    });
+  }
+});
 
 // ferienfreizeiten > tabs
 
@@ -44,10 +55,6 @@ if (tabBtnContainer != null) {
         tabBtn.classList.remove("active");
       });
       tabBtn.classList.add("active");
-
-      // const activeTab = tabContentContainer.querySelector(".active");
-      // activeTab.classList.remove("active");
-      // activeTab.classList.add("fade-out");
 
       const old = [...tabContentContainer].find((tab) =>
         tab.classList.contains("active")
