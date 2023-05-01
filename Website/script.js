@@ -73,3 +73,31 @@ if (tabBtnContainer != null) {
     });
   });
 }
+
+// index boder radius
+
+const images = document.querySelectorAll(
+  '.ix section:nth-child(1) [role="img"]'
+);
+
+const setRadius = (image) => {
+  const width = image.getBoundingClientRect().width;
+  const height = image.getBoundingClientRect().height;
+  const radius = Math.min(width, height) / 2;
+  image.style.borderRadius = `${radius}px`;
+};
+
+console.log(images);
+if (images != null) {
+  // set the data-radius attribute to half the with of the smallest side of the box
+  images.forEach((image) => {
+    setRadius(image);
+  });
+}
+
+// if window is resized, set the radius again
+window.addEventListener("resize", () => {
+  images.forEach((image) => {
+    setRadius(image);
+  });
+});

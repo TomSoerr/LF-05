@@ -894,6 +894,108 @@ h3 {
 
 .ix {
   grid-template-rows:
-    var(--nav-hoehe) calc(50vh - var(--nav-hoehe)) calc(50vh - var(--nav-hoehe))
-    auto auto;
+    calc(var(--nav-hoehe) + var(--abstand) * 2) calc(
+      50vh - var(--nav-hoehe) - var(--abstand) * 2
+    )
+    calc(50vh - var(--abstand) * 2)
+    var(--spacer) 50vh var(--spacer) 50vh var(--spacer) 50vh var(--spacer) auto;
+}
+
+.ix section:nth-child(1) h1 {
+  grid-area: 2 / 6 / 3 / 10;
+  font-size: calc(2 * var(--section));
+  margin: 0;
+}
+
+.ix section:nth-child(1) #ix-hero-img-1 {
+  grid-area: 2 / 2 / 3 / 5;
+
+  background: linear-gradient(
+    213deg,
+    rgba(63, 63, 63, 1) 0%,
+    rgba(48, 123, 105, 1) 100%
+  );
+}
+.ix section:nth-child(1) #ix-hero-img-2 {
+  grid-area: 2 / 11 / 3 / -2;
+  height: 75%;
+  margin-top: 25%;
+  background: linear-gradient(
+    213deg,
+    rgba(63, 63, 63, 1) 0%,
+    rgba(48, 123, 105, 1) 100%
+  );
+}
+.ix section:nth-child(1) #ix-hero-img-3 {
+  grid-area: 3 / 5 / 4 / 7;
+  background: linear-gradient(
+    213deg,
+    rgba(63, 63, 63, 1) 0%,
+    rgba(48, 123, 105, 1) 100%
+  );
+}
+.ix section:nth-child(1) #ix-hero-img-4 {
+  grid-area: 3 / 8 / 4 / 10;
+  background: linear-gradient(
+    213deg,
+    rgba(63, 63, 63, 1) 0%,
+    rgba(48, 123, 105, 1) 100%
+  );
+}
+
+.ix section:not(:first-child) div[role="img"]:first-child {
+  grid-column: 3 / 8;
+}
+
+.ix section:not(:first-child) div[role="img"]:last-child {
+  grid-column: 7 / 12;
+}
+
+.ix section:not(:first-child) div:not([role="img"]):first-child {
+  grid-column: 2 / 7;
+  justify-self: end;
+}
+
+.ix section:not(:first-child) div:not([role="img"]):last-child {
+  grid-column: 8 / 13;
+  justify-self: start;
+}
+
+.ix section:not(:first-child) div:not([role="img"]) {
+  align-self: start;
+  max-width: 65ch;
+}
+
+.ix section:nth-child(2) > * {
+  grid-row: 5;
+}
+
+.ix section:nth-child(3) > * {
+  grid-row: 7;
+}
+
+.ix section:nth-child(4) > * {
+  grid-row: 9;
+}
+
+.ix section #ix-section-img-1 {
+  background: linear-gradient(
+    213deg,
+    rgba(63, 63, 63, 1) 0%,
+    rgba(48, 123, 105, 1) 100%
+  );
+}
+.ix section #ix-section-img-2 {
+  background: linear-gradient(
+    213deg,
+    rgba(63, 63, 63, 1) 0%,
+    rgba(48, 123, 105, 1) 100%
+  );
+}
+.ix section #ix-section-img-3 {
+  background: linear-gradient(
+    213deg,
+    rgba(63, 63, 63, 1) 0%,
+    rgba(48, 123, 105, 1) 100%
+  );
 }
