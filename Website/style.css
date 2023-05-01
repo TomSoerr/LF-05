@@ -877,8 +877,9 @@ h3 {
   margin: var(--abstand) 0;
 }
 
-.kt section:nth-child(2) p {
+.kt section:nth-child(2) address {
   grid-area: 4 / 10 / 5 / -2;
+  font-style: normal;
 }
 
 .kt section:nth-child(2) #streetmap {
@@ -910,37 +911,21 @@ h3 {
 .ix section:nth-child(1) #ix-hero-img-1 {
   grid-area: 2 / 2 / 3 / 5;
 
-  background: linear-gradient(
-    213deg,
-    rgba(63, 63, 63, 1) 0%,
-    rgba(48, 123, 105, 1) 100%
-  );
+  background: linear-gradient(-10deg, #ded4c5 20%, #fffefa 100%);
 }
 .ix section:nth-child(1) #ix-hero-img-2 {
   grid-area: 2 / 11 / 3 / -2;
   height: 75%;
   margin-top: 25%;
-  background: linear-gradient(
-    213deg,
-    rgba(63, 63, 63, 1) 0%,
-    rgba(48, 123, 105, 1) 100%
-  );
+  background: linear-gradient(-10deg, #ded4c5 20%, #fffefa 100%);
 }
 .ix section:nth-child(1) #ix-hero-img-3 {
   grid-area: 3 / 5 / 4 / 7;
-  background: linear-gradient(
-    213deg,
-    rgba(63, 63, 63, 1) 0%,
-    rgba(48, 123, 105, 1) 100%
-  );
+  background: linear-gradient(-10deg, #ded4c5 20%, #fffefa 100%);
 }
 .ix section:nth-child(1) #ix-hero-img-4 {
   grid-area: 3 / 8 / 4 / 10;
-  background: linear-gradient(
-    213deg,
-    rgba(63, 63, 63, 1) 0%,
-    rgba(48, 123, 105, 1) 100%
-  );
+  background: linear-gradient(-10deg, #ded4c5 20%, #fffefa 100%);
 }
 
 .ix section:not(:first-child) div[role="img"]:first-child {
@@ -979,23 +964,67 @@ h3 {
 }
 
 .ix section #ix-section-img-1 {
-  background: linear-gradient(
-    213deg,
-    rgba(63, 63, 63, 1) 0%,
-    rgba(48, 123, 105, 1) 100%
-  );
+  background: linear-gradient(-10deg, #ded4c5 20%, #fffefa 100%);
 }
 .ix section #ix-section-img-2 {
-  background: linear-gradient(
-    213deg,
-    rgba(63, 63, 63, 1) 0%,
-    rgba(48, 123, 105, 1) 100%
-  );
+  background: linear-gradient(-10deg, #ded4c5 20%, #fffefa 100%);
 }
 .ix section #ix-section-img-3 {
-  background: linear-gradient(
-    213deg,
-    rgba(63, 63, 63, 1) 0%,
-    rgba(48, 123, 105, 1) 100%
-  );
+  background: linear-gradient(-10deg, #ded4c5 20%, #fffefa 100%);
+}
+
+/* Australien -> .aus */
+
+.aus {
+  grid-template-rows:
+    calc(var(--nav-hoehe) + var(--abstand) * 2) calc(
+      100vh - var(--nav-hoehe) - var(--abstand) * 4
+    )
+    var(--spacer) calc(100vh - var(--nav-hoehe)) var(--spacer) calc(
+      100vh - var(--nav-hoehe)
+    )
+    var(--spacer) calc(100vh - var(--nav-hoehe)) var(--spacer) auto;
+}
+/* tmp */
+
+.aus section:last-child p {
+  grid-area: -4 / 2 / -3 / -2;
+}
+
+.aus section:nth-child(1) > div:not(#aus-hero-img) {
+  grid-area: 2 / 2 / 3 / 6;
+  align-self: center;
+}
+
+.aus section:nth-child(1) > #aus-hero-img {
+  grid-area: 2 / 7 / 3 / -2;
+
+  background: linear-gradient(-10deg, #ded4c5 20%, #fffefa 100%);
+}
+
+.aus section:nth-child(2),
+.aus section:nth-child(3) {
+  grid-column: 2 / -2;
+  grid-template-columns: repeat(11, 1fr);
+  column-gap: var(--abstand);
+  display: grid;
+}
+
+.aus section:nth-child(4) {
+  grid-column: 3 / -3;
+  grid-template-columns: repeat(9, 1fr);
+  column-gap: var(--abstand);
+  display: grid;
+}
+
+.aus section:nth-child(2) {
+  grid-row: 4;
+}
+
+.aus section:nth-child(3) {
+  grid-row: 6;
+}
+
+.aus section:nth-child(4) {
+  grid-row: 8;
 }

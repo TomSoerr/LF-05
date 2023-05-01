@@ -93,11 +93,11 @@ if (images != null) {
   images.forEach((image) => {
     setRadius(image);
   });
-}
 
-// if window is resized, set the radius again
-window.addEventListener("resize", () => {
-  images.forEach((image) => {
-    setRadius(image);
+  // if window is resized, set the radius again
+  window.addEventListener("resize", () => {
+    images.forEach((image) => {
+      setRadius(image);
+    });
   });
-});
+}
