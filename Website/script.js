@@ -87,7 +87,6 @@ const setRadius = (image) => {
   image.style.borderRadius = `${radius}px`;
 };
 
-console.log(images);
 if (images != null) {
   // set the data-radius attribute to half the with of the smallest side of the box
   images.forEach((image) => {
@@ -101,3 +100,70 @@ if (images != null) {
     });
   });
 }
+
+// australien > slider
+
+const getUIElements = (menuSelector, buttonSelector, contentSelector) => {
+  const menu = document.querySelectorAll(menuSelector);
+  const buttonsLeft = document.querySelector(buttonSelector + ":first-of-type");
+  const buttonsRight = document.querySelector(buttonSelector + ":last-of-type");
+  const content = document.querySelectorAll(contentSelector);
+
+  const sliderObject = [];
+
+  for (const i in [...content]) {
+    const obj = {
+      menu: menu[i],
+      content: content[i],
+      activate: function () {
+        menu.forEach((item) => {
+          item.classList.remove("active");
+        });
+        content.forEach((item) => {
+          item.classList.remove("active");
+        });
+        this.menu.classList.add("active");
+        this.content.classList.add("active");
+      },
+    };
+    menu[i].addEventListener("click", obj.activate.bind(obj));
+
+    sliderObject.push(obj);
+  }
+
+  const left = () => {
+    // debugger;
+    const active = sliderObject.find((item) =>
+      item.content.classList.contains("active")
+    );
+    const index = sliderObject.indexOf(active);
+    if (index > 0) {
+      sliderObject[index - 1].activate();
+    } else {
+      sliderObject[sliderObject.length - 1].activate();
+    }
+  };
+  buttonsLeft.addEventListener("click", left);
+
+  const right = () => {
+    const active = sliderObject.find((item) =>
+      item.content.classList.contains("active")
+    );
+
+    const index = sliderObject.indexOf(active);
+    if (index < sliderObject.length - 1) {
+      sliderObject[index + 1].activate();
+    } else {
+      sliderObject[0].activate();
+    }
+  };
+  buttonsRight.addEventListener("click", right);
+
+  return [sliderObject, left, right];
+};
+
+const ausSlider1 = getUIElements(
+  ".aus main > section:nth-child(2) nav ul li button",
+  ".aus main > section:nth-child(2) > button",
+  ".aus main > section:nth-child(2) > .text-wrapper section"
+);

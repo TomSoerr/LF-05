@@ -158,7 +158,7 @@ body {
 
 /* NAV BAR */
 
-nav {
+body > nav {
   background-color: var(--text-farbe);
   color: var(--hintergrund-farbe);
   height: var(--nav-hoehe);
@@ -176,33 +176,29 @@ nav {
   z-index: 1;
 }
 
-nav > a {
+body > nav > a {
   width: calc(var(--nav-hoehe) * 2);
 }
 
-nav > ul {
+body > nav > ul {
   display: contents;
   height: 100%;
   padding: 0;
   margin: 0;
 }
 
-nav li {
+body > nav li {
   list-style: none;
   position: relative;
 }
 
-nav a {
+body > nav a {
   color: var(--hintergrund-farbe);
   text-decoration: none;
   display: block;
 }
 
-nav a:hover {
-  color: var(--akzent-farbe);
-}
-
-nav li a + ul {
+body > nav li a + ul {
   display: none;
   position: absolute;
   top: 100%;
@@ -217,12 +213,32 @@ nav li a + ul {
   width: max-content;
 }
 
-nav li:hover > a + ul {
+body > nav li:hover > a + ul {
   display: flex;
+  align-items: center;
 }
 
-nav a:first-child {
+body > nav a:first-child {
   margin-right: auto;
+}
+
+/* a:hover und menu */
+
+a:not(.btn-link),
+.menu button {
+  position: relative;
+}
+a:not(.btn-link):hover::after,
+.menu button:hover::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.25rem;
+  transform: translateY(0.25rem);
+  z-index: 1;
+  content: " ";
+  background-color: var(--akzent-farbe-2);
 }
 
 /* FOOTER */
@@ -247,6 +263,8 @@ body {
   display: grid;
   grid-template-columns: repeat(13, 1fr);
   column-gap: var(--abstand);
+  color: var(--text-farbe);
+  background-color: var(--hintergrund-farbe);
 }
 
 [role="img"] {
@@ -303,7 +321,7 @@ h3 {
   margin: 0;
   padding: 0;
   align-self: center;
-  background-color: var(--hintergrund-farbe);
+  background-color: transparent;
   width: 100%;
   aspect-ratio: 1;
   display: grid;
@@ -980,51 +998,145 @@ h3 {
     calc(var(--nav-hoehe) + var(--abstand) * 2) calc(
       100vh - var(--nav-hoehe) - var(--abstand) * 4
     )
-    var(--spacer) calc(100vh - var(--nav-hoehe)) var(--spacer) calc(
-      100vh - var(--nav-hoehe)
+    var(--spacer) calc(85vh - var(--nav-hoehe)) var(--spacer) calc(
+      85vh - var(--nav-hoehe)
     )
-    var(--spacer) calc(100vh - var(--nav-hoehe)) var(--spacer) auto;
+    var(--spacer) calc(85vh - var(--nav-hoehe)) var(--spacer) auto;
 }
 /* tmp */
 
-.aus section:last-child p {
-  grid-area: -4 / 2 / -3 / -2;
-}
-
-.aus section:nth-child(1) > div:not(#aus-hero-img) {
+.aus main > section:nth-child(1) > div:not(#aus-hero-img) {
   grid-area: 2 / 2 / 3 / 6;
   align-self: center;
 }
 
-.aus section:nth-child(1) > #aus-hero-img {
+.aus main > section:nth-child(1) > #aus-hero-img {
   grid-area: 2 / 7 / 3 / -2;
 
   background: linear-gradient(-10deg, #ded4c5 20%, #fffefa 100%);
 }
 
-.aus section:nth-child(2),
-.aus section:nth-child(3) {
+.aus main > section:nth-child(2),
+.aus main > section:nth-child(3) {
   grid-column: 2 / -2;
   grid-template-columns: repeat(11, 1fr);
   column-gap: var(--abstand);
   display: grid;
 }
 
-.aus section:nth-child(4) {
+.aus main > section:nth-child(4) {
   grid-column: 3 / -3;
   grid-template-columns: repeat(9, 1fr);
   column-gap: var(--abstand);
   display: grid;
 }
 
-.aus section:nth-child(2) {
+.aus main > section:nth-child(2) {
   grid-row: 4;
 }
 
-.aus section:nth-child(3) {
+.aus main > section:nth-child(3) {
   grid-row: 6;
 }
 
-.aus section:nth-child(4) {
+.aus main > section:nth-child(4) {
   grid-row: 8;
+}
+
+.aus main > section:nth-child(2) {
+  grid-column: 2 / -2;
+  grid-template-columns: repeat(11, 1fr);
+  column-gap: var(--abstand);
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  /* später auch auf 3te section anwenden */
+}
+
+.aus main > section:nth-child(2) h2 {
+  grid-column: 1 / 7;
+  grid-row: 1;
+  margin: 0 0 var(--abstand) 0;
+  font-size: var(--section);
+}
+
+.aus main > section:nth-child(2) nav {
+  grid-column: 1 / 7;
+  grid-row: 2;
+  margin: 0;
+}
+
+.aus main > section:nth-child(2) nav ul {
+  display: flex;
+  justify-content: start;
+  gap: var(--abstand);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.aus main > section:nth-child(2) nav ul li button {
+  appearance: none;
+  border: none;
+  background: transparent;
+  opacity: 0.7;
+  color: var(--sekundaer-farbe);
+  margin: 0;
+  padding: 0;
+}
+
+.aus main > section:nth-child(2) nav ul li button:hover {
+  opacity: 1;
+}
+
+.aus main > section:nth-child(2) nav ul li button.active {
+  opacity: 1;
+  font-weight: 700;
+}
+
+.aus main > section:nth-child(2) > .text-wrapper {
+  grid-column: 1 / 7;
+  grid-row: 3;
+}
+
+.aus main > section:nth-child(2) > .text-wrapper section {
+  display: none;
+}
+
+.aus main > section:nth-child(2) > .text-wrapper section h3 {
+  font-size: var(--subsection);
+  margin: calc(var(--abstand) / 2) 0 calc(var(--abstand) / 1.5) 0;
+}
+
+.aus main > section:nth-child(2) > .text-wrapper section p {
+  margin: 0 0 var(--abstand) 0;
+  max-width: 65ch;
+}
+
+.aus main > section:nth-child(2) > .text-wrapper section.active {
+  display: block;
+}
+
+.aus main > section:nth-child(2) > button {
+  grid-row: 4;
+}
+
+.aus main > section:nth-child(2) > button:first-of-type {
+  grid-column: 1 / 2;
+}
+
+.aus main > section:nth-child(2) > button:last-of-type {
+  grid-column: 2 / 3;
+}
+
+.aus main > section:nth-child(2) > .img-wrapper {
+  grid-row: 1 / 5;
+  grid-column: 7 / -1;
+}
+
+.aus main > section:nth-child(2) > .img-wrapper div {
+  height: 100%;
+  width: 100%;
+}
+
+.aus main > section:nth-child(2) > .img-wrapper #aus-slider-1-img-1 {
+  background: linear-gradient(-10deg, #ded4c5 20%, #fffefa 100%);
 }
