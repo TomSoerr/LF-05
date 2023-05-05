@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../style.css" />
     <script src="../script.js" defer></script>
   </head>
-  <body class="aus">
+  <body class="aus preload">
     <nav>
       <a href="../index.html"><img src="" alt="Logo" /></a>
       <ul>
@@ -230,7 +230,16 @@
           </svg>
         </button>
         <div class="img-wrapper">
-          <div id="aus-slider-1-img-1" role="img" aria-label="alt text"></div>
+          <div
+            class="active"
+            id="aus-slider-1-img-1"
+            role="img"
+            aria-label="alt text"
+          ></div>
+          <div id="aus-slider-1-img-2" role="img" aria-label="alt text"></div>
+          <div id="aus-slider-1-img-3" role="img" aria-label="alt text"></div>
+          <div id="aus-slider-1-img-4" role="img" aria-label="alt text"></div>
+          <div id="aus-slider-1-img-5" role="img" aria-label="alt text"></div>
         </div>
       </section>
 
@@ -238,34 +247,81 @@
 
       <section>
         <h2>Programmablauf und Betreuung</h2>
-        <h3>Gut gewappnet in die Welt</h3>
-        <p>
-          Damit du selbstbewusst in deinen Austausch starten kannst, bereiten
-          wir dich intensiv vor. My Globe ermöglicht dir den Besuch von zwei bis
-          drei Wochenendseminaren, auf denen du gemeinsam mit anderen
-          Austauschschülerinnen und - schülern die eigenen Erwartungen
-          reflektierst, Hintergrundwissen zum Gastland erwirbst und Tipps im
-          Umgang mit ungewohnten Situationen erlernst. Weitere Themen sind der
-          Umgang mit typischen My Globe -Regeln sowie die My Globe -Betreuung.
-          Durchgeführt werden die Vorbereitungsseminare von ehrenamtlichen
-          Mitarbeiterinnen und Mitarbeitern, die in der Regel selbst ehemalige
-          My Globe -Austauschschülerinnen und -schüler sind. Sie helfen dir mit
-          vielen nützlichen Hinweisen für die Zeit im Gastland.
-        </p>
-        <h3>Auch vor Ort sorgfältig betreut</h3>
-        <p>
-          Schon am Flughafen empfängt dich eine My Globe -Ansprechperson. Du und
-          deine Gastfamilie erhalten außerdem eine persönliche Betreuerin, bzw.
-          einen persönlichen Betreuer. Diese Person steht euch mit Rat und Tat
-          zur Seite und kann bei Bedarf vermitteln. My Globe --Betreuerinnen und
-          -Betreuer wohnen in der Nähe oder zumindest in derselben Region wie
-          deine Gastfamilie. Auch die jeweilige My Globe --Geschäftsstelle im
-          Gastland hilft dir gerne weiter. Für alle Fälle gibt es in jedem
-          Partnerland eine My Globe --Notrufnummer, unter der täglich rund um
-          die Uhr MyGlobe-Mitarbeiterinnen und -Mitarbeiter erreichbar sind. Im
-          Gastland nimmst du an 2-3 weiteren Seminaren teil, die dir helfen,
-          deine Erlebnisse zu verarbeiten.
-        </p>
+        <nav>
+          <ul class="menu">
+            <li><button class="active">Gut gewappnet in die Welt</button></li>
+            <li><button>Auch vor Ort sorgfältig betreut</button></li>
+          </ul>
+        </nav>
+        <button class="img-btn">
+          <svg
+            id="Ebene_1"
+            data-name="Ebene 1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 48 48"
+          >
+            <path
+              d="m32.67,44.01c-.78,0-1.44-.27-1.98-.8L13.15,25.66c-.23-.23-.41-.49-.53-.78s-.18-.58-.18-.88.06-.59.18-.88.29-.54.53-.78L30.75,4.81c.53-.57,1.2-.84,2-.83s1.47.31,2,.88c.57.57.83,1.24.8,2.03s-.32,1.44-.85,1.98l-15.15,15.15,15.15,15.15c.57.57.84,1.23.83,2s-.29,1.43-.83,2c-.57.57-1.24.85-2.03.85Z"
+            />
+          </svg>
+        </button>
+        <div class="text-wrapper">
+          <section class="active">
+            <h3>Gut gewappnet in die Welt</h3>
+            <p>
+              Damit du selbstbewusst in deinen Austausch starten kannst,
+              bereiten wir dich intensiv vor. My Globe ermöglicht dir den Besuch
+              von zwei bis drei Wochenendseminaren, auf denen du gemeinsam mit
+              anderen Austauschschülerinnen und - schülern die eigenen
+              Erwartungen reflektierst, Hintergrundwissen zum Gastland erwirbst
+              und Tipps im Umgang mit ungewohnten Situationen erlernst. Weitere
+              Themen sind der Umgang mit typischen My Globe -Regeln sowie die My
+              Globe -Betreuung. Durchgeführt werden die Vorbereitungsseminare
+              von ehrenamtlichen Mitarbeiterinnen und Mitarbeitern, die in der
+              Regel selbst ehemalige My Globe -Austauschschülerinnen und
+              -schüler sind. Sie helfen dir mit vielen nützlichen Hinweisen für
+              die Zeit im Gastland.
+            </p>
+          </section>
+          <section>
+            <h3>Auch vor Ort sorgfältig betreut</h3>
+            <p>
+              Schon am Flughafen empfängt dich eine My Globe -Ansprechperson. Du
+              und deine Gastfamilie erhalten außerdem eine persönliche
+              Betreuerin, bzw. einen persönlichen Betreuer. Diese Person steht
+              euch mit Rat und Tat zur Seite und kann bei Bedarf vermitteln. My
+              Globe --Betreuerinnen und -Betreuer wohnen in der Nähe oder
+              zumindest in derselben Region wie deine Gastfamilie. Auch die
+              jeweilige My Globe --Geschäftsstelle im Gastland hilft dir gerne
+              weiter. Für alle Fälle gibt es in jedem Partnerland eine My Globe
+              --Notrufnummer, unter der täglich rund um die Uhr
+              MyGlobe-Mitarbeiterinnen und -Mitarbeiter erreichbar sind. Im
+              Gastland nimmst du an 2-3 weiteren Seminaren teil, die dir helfen,
+              deine Erlebnisse zu verarbeiten.
+            </p>
+          </section>
+        </div>
+        <button class="img-btn">
+          <svg
+            id="Ebene_1"
+            data-name="Ebene 1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 48 48"
+          >
+            <path
+              d="m13.3,43.16c-.53-.57-.81-1.23-.83-2s.26-1.43.83-2l15.15-15.15-15.15-15.15c-.53-.53-.82-1.19-.85-1.98s.23-1.46.8-2.03c.53-.57,1.2-.86,2-.88s1.47.26,2,.83l17.6,17.55c.23.23.41.49.53.78s.18.58.18.88-.06.59-.18.88-.29.54-.53.78l-17.55,17.55c-.53.53-1.19.8-1.98.8s-1.46-.28-2.03-.85Z"
+            />
+          </svg>
+        </button>
+        <div class="img-wrapper">
+          <div
+            class="active"
+            id="aus-slider-2-img-1"
+            role="img"
+            aria-label="alt text"
+          ></div>
+          <div id="aus-slider-2-img-2" role="img" aria-label="alt text"></div>
+        </div>
       </section>
       <section>
         <h2>Unsere Leistungen</h2>
