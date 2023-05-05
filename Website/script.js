@@ -1,3 +1,34 @@
+setTimeout(function () {
+  document.body.classList.remove("preload");
+}, 1000);
+
+// index boder radius
+
+const images = document.querySelectorAll(
+  '.ix section:nth-child(1) [role="img"]'
+);
+
+const setRadius = (image) => {
+  const width = image.getBoundingClientRect().width;
+  const height = image.getBoundingClientRect().height;
+  const radius = Math.min(width, height) / 2;
+  image.style.borderRadius = `${radius}px`;
+};
+
+if (images != null) {
+  // set the data-radius attribute to half the with of the smallest side of the box
+  images.forEach((image) => {
+    setRadius(image);
+  });
+
+  // if window is resized, set the radius again
+  window.addEventListener("resize", () => {
+    images.forEach((image) => {
+      setRadius(image);
+    });
+  });
+}
+
 const sliders = [
   {
     // ferienfreizeiten > slider
@@ -62,7 +93,6 @@ if (tabBtnContainer != null) {
 
       old.classList.remove("active");
       old.classList.add("fade-out");
-      console.log(old);
 
       setTimeout(() => {
         tabContentContainer[
@@ -74,65 +104,69 @@ if (tabBtnContainer != null) {
   });
 }
 
-// index boder radius
-
-const images = document.querySelectorAll(
-  '.ix section:nth-child(1) [role="img"]'
-);
-
-const setRadius = (image) => {
-  const width = image.getBoundingClientRect().width;
-  const height = image.getBoundingClientRect().height;
-  const radius = Math.min(width, height) / 2;
-  image.style.borderRadius = `${radius}px`;
-};
-
-if (images != null) {
-  // set the data-radius attribute to half the with of the smallest side of the box
-  images.forEach((image) => {
-    setRadius(image);
-  });
-
-  // if window is resized, set the radius again
-  window.addEventListener("resize", () => {
-    images.forEach((image) => {
-      setRadius(image);
-    });
-  });
-}
-
 // australien > slider
 
-const getUIElements = (menuSelector, buttonSelector, contentSelector) => {
-  const menu = document.querySelectorAll(menuSelector);
+const getUIElements = (
+  menuSelector,
+  buttonSelector,
+  contentSelector,
+  imageSelector
+) => {
+  const menuContainer = document.querySelectorAll(menuSelector);
   const buttonsLeft = document.querySelector(buttonSelector + ":first-of-type");
   const buttonsRight = document.querySelector(buttonSelector + ":last-of-type");
-  const content = document.querySelectorAll(contentSelector);
+  const contentContainer = document.querySelectorAll(contentSelector);
+  const images = document.querySelectorAll(imageSelector);
 
   const sliderObject = [];
 
-  for (const i in [...content]) {
+  for (const i in [...contentContainer]) {
     const obj = {
-      menu: menu[i],
-      content: content[i],
+      id: i,
+      menu: menuContainer[i],
+      image: images[i],
+      content: contentContainer[i],
       activate: function () {
-        menu.forEach((item) => {
-          item.classList.remove("active");
-        });
-        content.forEach((item) => {
-          item.classList.remove("active");
-        });
+        console.info(this);
+
+        const oldMenu = [...menuContainer].find((item) =>
+          item.classList.contains("active")
+        );
+
+        oldMenu.classList.remove("active");
+        // oldMenu.classList.add("menu-fade-out");
+
+        const oldContent = [...contentContainer].find((item) =>
+          item.classList.contains("active")
+        );
+
+        oldContent.classList.remove("active");
+        oldContent.classList.add("fade-out");
+
+        const oldImage = [...images].find((item) =>
+          item.classList.contains("active")
+        );
+
+        oldImage.classList.remove("active");
+        oldImage.classList.add("fade-out");
+
+        setTimeout(() => {
+          oldMenu.classList.remove("menu-fade-out");
+          oldContent.classList.remove("fade-out");
+          oldImage.classList.remove("fade-out");
+
+          this.image.classList.add("active");
+          this.content.classList.add("active");
+        }, 200);
         this.menu.classList.add("active");
-        this.content.classList.add("active");
       },
     };
-    menu[i].addEventListener("click", obj.activate.bind(obj));
+    menuContainer[i].addEventListener("click", obj.activate.bind(obj));
 
     sliderObject.push(obj);
   }
 
   const left = () => {
-    // debugger;
     const active = sliderObject.find((item) =>
       item.content.classList.contains("active")
     );
@@ -165,5 +199,13 @@ const getUIElements = (menuSelector, buttonSelector, contentSelector) => {
 const ausSlider1 = getUIElements(
   ".aus main > section:nth-child(2) nav ul li button",
   ".aus main > section:nth-child(2) > button",
-  ".aus main > section:nth-child(2) > .text-wrapper section"
+  ".aus main > section:nth-child(2) > .text-wrapper section",
+  ".aus main > section:nth-child(2) > .img-wrapper > div"
+);
+
+const ausSlider2 = getUIElements(
+  ".aus main > section:nth-child(3) nav ul li button",
+  ".aus main > section:nth-child(3) > button",
+  ".aus main > section:nth-child(3) > .text-wrapper section",
+  ".aus main > section:nth-child(3) > .img-wrapper > div"
 );
