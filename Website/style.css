@@ -156,7 +156,7 @@ body {
   min-height: 100vh;
 }
 
-body.preload * {
+body.preload {
   animation-duration: 0s !important;
   -webkit-animation-duration: 0s !important;
   transition: background-color 0s, opacity 0s, color 0s, width 0s, height 0s,
@@ -248,19 +248,46 @@ a:not(.btn-link)::after,
 .menu button::after {
   position: absolute;
   bottom: 0;
-  left: 0;
+  right: 0;
   width: 100%;
-  height: 0.25rem;
-  transform: translateY(0.25rem);
+  height: 0.2rem;
+  transform: translateY(0.2rem);
   z-index: 1;
   content: " ";
   background-color: var(--akzent-farbe-2);
-  animation: out 0.2s ease-in-out forwards;
+  animation: a-out 0.2s ease-in-out forwards;
+}
+
+.preload a:not(.btn-link)::after,
+.preload .menu button::after {
+  animation: a-out 0s ease-in-out forwards;
 }
 
 a:not(.btn-link):hover::after,
 .menu button:hover::after {
-  animation: in 0.2s ease-in-out forwards;
+  left: 0;
+  animation: a-in 0.2s ease-in-out forwards;
+}
+
+@keyframes a-in {
+  from {
+    width: 0%;
+    opacity: 0;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes a-out {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+    opacity: 0;
+  }
 }
 
 @keyframes in {
@@ -286,19 +313,50 @@ a:not(.btn-link):hover::after,
 footer {
   background-color: var(--text-farbe);
   color: var(--hintergrund-farbe);
-  padding: var(--abstand) var(--seiten-margin);
+  padding: calc(var(--spacer) / 2) 0;
   font-family: "Raleway", var(--fallback-font);
   font-weight: 400;
   grid-column: 1 / -1;
   grid-row: -2 / -1;
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+  column-gap: var(--abstand);
 }
 
-footer a {
-  color: inherit;
+footer * {
+  margin: 0;
+  padding: 0;
   text-decoration: none;
+  list-style: none;
+  color: inherit;
+  font-style: normal;
+}
+
+footer .text-wrapper:nth-child(1) {
+  grid-column: 2 / span 3;
+}
+
+footer .text-wrapper:nth-child(2) {
+  grid-column: 6 / span 3;
+}
+
+footer .text-wrapper:nth-child(3) {
+  grid-column: 10 / span 3;
+}
+
+footer h3 {
+  margin-bottom: calc(var(--abstand) / 2);
 }
 
 /* allgemein */
+
+/* 
+section margin abstand
+subsection margin abstand / 1.5
+subsubsection margin abstand / 2
+p margin abstand / 3
+li margin abstand / 4
+ */
 
 body {
   display: grid;
@@ -321,6 +379,7 @@ body {
   background-color: var(--sekundaer-farbe);
   border-radius: 1.5rem;
   padding: 0 1.5rem;
+  margin: calc(var(--abstand) / 2) 0;
 
   color: var(--hintergrund-farbe);
   text-decoration: none;
@@ -340,6 +399,8 @@ main > section {
 
 blockquote {
   font-style: italic;
+  max-width: 65ch;
+  margin: calc(var(--abstand) / 2) 0;
   border-left: 0.25rem solid var(--akzent-farbe-2);
   padding-left: 1rem;
   margin-left: 2rem;
@@ -727,7 +788,7 @@ h3 {
   border: solid 0.25rem var(--sekundaer-farbe);
   border-radius: 0 0 var(--border-radius) var(--border-radius);
   min-height: 65vh;
-  animation: fade-in 0.5s ease-in-out forwards;
+  animation: in 0.5s ease-in-out forwards;
 }
 
 .ff main > section:nth-of-type(3) > section.active,
@@ -736,23 +797,11 @@ h3 {
 }
 
 .ff main > section:nth-of-type(3) > section.active * {
-  animation: fade-in 0.2s ease-in-out forwards;
+  animation: in 0.2s ease-in-out forwards;
 }
 
 .ff main > section:nth-of-type(3) > section.fade-out * {
-  animation: fade-out 0.2s ease-in-out forwards;
-}
-
-@keyframes fade-in {
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-out {
-  to {
-    opacity: 0;
-  }
+  animation: out 0.2s ease-in-out forwards;
 }
 
 .ff main > section:nth-of-type(3) .angebot p svg {
@@ -1050,19 +1099,21 @@ h3 {
     var(--spacer) calc(85vh - var(--nav-hoehe)) var(--spacer) calc(
       85vh - var(--nav-hoehe)
     )
-    var(--spacer) calc(85vh - var(--nav-hoehe)) var(--spacer) auto;
+    var(--spacer) auto var(--spacer) auto;
 }
-/* tmp */
 
 .aus main > section:nth-child(1) > div:not(#aus-hero-img) {
   grid-area: 2 / 2 / 3 / 6;
-  align-self: center;
+  margin-top: var(--abstand);
+}
+
+.aus main > section:nth-child(1) > div:not(#aus-hero-img) h1 {
+  margin: var(--abstand) 0;
 }
 
 .aus main > section:nth-child(1) > #aus-hero-img {
   grid-area: 2 / 7 / 3 / -2;
-
-  background: linear-gradient(-10deg, #ded4c5 20%, #fffefa 100%);
+  background-image: url("./img/aus-hero.jpg");
 }
 
 .aus main > section:nth-child(2),
@@ -1073,23 +1124,12 @@ h3 {
   display: grid;
 }
 
-.aus main > section:nth-child(4) {
-  grid-column: 3 / -3;
-  grid-template-columns: repeat(9, 1fr);
-  column-gap: var(--abstand);
-  display: grid;
-}
-
 .aus main > section:nth-child(2) {
   grid-row: 4;
 }
 
 .aus main > section:nth-child(3) {
   grid-row: 6;
-}
-
-.aus main > section:nth-child(4) {
-  grid-row: 8;
 }
 
 /* sliders */
@@ -1146,6 +1186,8 @@ h3 {
   color: var(--sekundaer-farbe);
   margin: 0;
   padding: 0;
+  font-weight: 700;
+  transition: 0.2s ease-in-out;
 }
 
 .aus main > section:nth-child(3) nav ul li button:hover,
@@ -1156,7 +1198,6 @@ h3 {
 .aus main > section:nth-child(3) nav ul li button.active,
 .aus main > section:nth-child(2) nav ul li button.active {
   opacity: 1;
-  font-weight: 700;
 }
 
 .aus main > section:nth-child(3) > .text-wrapper,
@@ -1182,19 +1223,20 @@ h3 {
 
 .aus main > section:nth-child(3) > .text-wrapper section p,
 .aus main > section:nth-child(2) > .text-wrapper section p {
-  margin: 0 0 var(--abstand) 0;
+  margin: 0 0 calc(var(--abstand) / 3) 0;
   max-width: 65ch;
 }
 
 .aus main > section:nth-child(3) > .text-wrapper section.fade-out,
 .aus main > section:nth-child(2) > .text-wrapper section.fade-out {
-  animation: fade-out 0.2s ease-in-out forwards;
+  animation: out 0.2s ease-in-out forwards;
+  display: block;
 }
 
 .aus main > section:nth-child(3) > .text-wrapper section.active,
 .aus main > section:nth-child(2) > .text-wrapper section.active {
   display: block;
-  animation: fade-in 0.2s ease-in-out forwards;
+  animation: in 0.2s ease-in-out forwards;
 }
 
 .aus main > section:nth-child(3) > button,
@@ -1239,30 +1281,84 @@ h3 {
   display: block;
 }
 
+.aus main > section:nth-child(2) > .img-wrapper .fade-out,
+.aus main > section:nth-child(3) > .img-wrapper .fade-out {
+  animation: out 0.2s ease-in-out forwards;
+  display: block;
+}
+
+.aus main > section:nth-child(2) > .img-wrapper div {
+  animation: in 0.2s ease-in-out forwards;
+}
+
 .aus main > section:nth-child(2) > .img-wrapper #aus-slider-1-img-1 {
-  background: linear-gradient(50deg, #d48c8c 0%, #a0d3de 100%);
+  background-image: url(./img/aus-entdecken.jpg);
 }
 
 .aus main > section:nth-child(2) > .img-wrapper #aus-slider-1-img-2 {
-  background-image: linear-gradient(75deg, #d48c8c 0%, #a0d3de 100%);
+  background-image: url(./img/aus-australien.jpg);
 }
 
 .aus main > section:nth-child(2) > .img-wrapper #aus-slider-1-img-3 {
-  background-image: linear-gradient(100deg, #d48c8c 0%, #a0d3de 100%);
+  background-image: url(./img/aus-schule.jpg);
 }
 
 .aus main > section:nth-child(2) > .img-wrapper #aus-slider-1-img-4 {
-  background-image: linear-gradient(125deg, #d48c8c 0%, #a0d3de 100%);
+  background-image: url(./img/aus-freizeit.jpg);
 }
 
 .aus main > section:nth-child(2) > .img-wrapper #aus-slider-1-img-5 {
-  background-image: linear-gradient(150deg, #d48c8c 0%, #a0d3de 100%);
+  background-image: url(./img/aus-gastfamilie.jpg);
 }
 
 .aus main > section:nth-child(3) > .img-wrapper #aus-slider-2-img-1 {
-  background-image: linear-gradient(175deg, #d48c8c 0%, #a0d3de 100%);
+  background-image: url(./img/aus-gewappnet.jpg);
 }
 
 .aus main > section:nth-child(3) > .img-wrapper #aus-slider-2-img-2 {
-  background-image: linear-gradient(200deg, #d48c8c 0%, #a0d3de 100%);
+  background-image: url(./img/aus-vor-ort.jpg);
+}
+
+.aus main > section:nth-child(4) {
+  grid-column: 3 / -3;
+  grid-row: 8;
+  grid-template-columns: repeat(9, 1fr);
+  column-gap: var(--abstand);
+  grid-template-rows: auto auto 1fr;
+  display: grid;
+}
+
+.aus main > section:nth-child(4) > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.aus main > section:nth-child(4) h2 {
+  grid-column: 1 / span 5;
+  grid-row: 1;
+  margin-bottom: var(--abstand);
+  font-size: var(--section);
+}
+
+.aus main > section:nth-child(4) h3 {
+  grid-column: 1 / span 5;
+  grid-row: 2;
+  font-size: var(--subsection);
+  margin-bottom: calc(var(--abstand) / 1.5);
+}
+
+.aus main > section:nth-child(4) li {
+  margin-bottom: calc(var(--abstand) / 4);
+}
+
+.aus main > section:nth-child(4) > .text-wrapper {
+  grid-row: 3;
+}
+
+.aus main > section:nth-child(4) > .text-wrapper:first-of-type {
+  grid-column: 1/ 5;
+}
+
+.aus main > section:nth-child(4) > .text-wrapper:last-of-type {
+  grid-column: 6 / -1;
 }
