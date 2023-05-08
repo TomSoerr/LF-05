@@ -127,14 +127,11 @@ const getUIElements = (
       image: images[i],
       content: contentContainer[i],
       activate: function () {
-        console.info(this);
-
         const oldMenu = [...menuContainer].find((item) =>
           item.classList.contains("active")
         );
 
         oldMenu.classList.remove("active");
-        // oldMenu.classList.add("menu-fade-out");
 
         const oldContent = [...contentContainer].find((item) =>
           item.classList.contains("active")
@@ -151,7 +148,6 @@ const getUIElements = (
         oldImage.classList.add("fade-out");
 
         setTimeout(() => {
-          oldMenu.classList.remove("menu-fade-out");
           oldContent.classList.remove("fade-out");
           oldImage.classList.remove("fade-out");
 
