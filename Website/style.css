@@ -183,7 +183,7 @@ body > nav {
   width: 100%;
   font-family: "Raleway", var(--fallback-font);
   font-weight: 400;
-  z-index: 1;
+  z-index: 2;
 }
 
 body > nav > a {
@@ -216,10 +216,10 @@ body > nav li a + ul {
   right: 50%;
   transform: translateX(50%);
   background-color: var(--text-farbe);
-  padding: calc(var(--abstand) / 1.5);
+  padding: calc(var(--abstand) / 1.8);
   margin: 0;
   flex-direction: column;
-  gap: calc(var(--abstand) / 1.5);
+  gap: calc(var(--abstand) / 1.8);
   text-align: center;
   width: max-content;
   display: flex;
@@ -357,7 +357,7 @@ footer h3 {
 
 /* 
 section margin abstand
-subsection margin abstand / 1.5
+subsection margin abstand / 1.8
 subsubsection margin abstand / 2
 p margin abstand / 3
 li margin abstand / 4
@@ -388,7 +388,7 @@ body {
   background-color: var(--sekundaer-farbe);
   border-radius: 1.5rem;
   padding: 0 1.5rem;
-  margin: calc(var(--abstand) / 1.5) 0;
+  margin: calc(var(--abstand) / 1.8) 0;
 
   color: var(--hintergrund-farbe);
   text-decoration: none;
@@ -420,7 +420,7 @@ blockquote {
   font-style: italic;
   font-size: var(--subsubsection);
   max-width: 65ch;
-  margin: calc(var(--abstand) / 1.5) 0;
+  margin: calc(var(--abstand) / 1.8) 0;
   border-left: 0.25rem solid var(--akzent-farbe-2);
   padding-left: 1rem;
   margin-left: 2rem;
@@ -433,7 +433,7 @@ h1 {
 
 h2 {
   font-size: var(--subsection);
-  margin: calc(var(--abstand) / 1.5) 0;
+  margin: calc(var(--abstand) / 1.8) 0;
 }
 
 h3 {
@@ -764,6 +764,7 @@ meter::-webkit-meter-optimum-value {
     var(--spacer) calc(100vh - var(--nav-hoehe) - 2 * var(--abstand)) var(
       --spacer
     )
+    calc(var(--spacer) / 2)
     auto var(--spacer)
     auto;
 }
@@ -772,7 +773,7 @@ meter::-webkit-meter-optimum-value {
   background-color: var(--primaer-farbe);
   /* erst die x Linie dann die y Linie */
   grid-area: 1 / 1 / 7 / 9;
-  border-bottom-right-radius: calc(8 * var(--border-radius));
+  border-bottom-right-radius: calc(4 * var(--border-radius));
 }
 
 .ff main > section:nth-of-type(1) .ff-hero-text {
@@ -862,14 +863,41 @@ meter::-webkit-meter-optimum-value {
 
 .ff main > section:nth-of-type(2) .ff-section-text {
   grid-column: 8 / -2;
+  align-self: center;
+}
+
+.ff main > section:nth-of-type(2) .ff-section-text h2:not(:first-of-type) {
+  margin-top: calc((var(--abstand) / 1.8) * 3);
+}
+
+.ff main > section:nth-of-type(2) .ff-section-text h2:first-of-type {
+  margin-top: 0;
+}
+
+.ff main > section:nth-of-type(2) .ff-section-text h2 {
+  margin-bottom: calc(var(--abstand) / 1.8);
+}
+
+.ff main > section:nth-of-type(2) .ff-section-text p {
+  max-width: 65ch;
+  margin: 0;
 }
 
 /* Tab Section */
 
 .ff main > section:nth-of-type(3) {
   display: block;
-  grid-row: 10;
+  grid-row: 11;
   grid-column: 2 / -2;
+}
+.ff main > section:nth-of-type(3) h2 {
+  margin: 0;
+}
+
+#section-bg {
+  grid-row: 10 / 13;
+  grid-column: 1 / -1;
+  background-color: var(--primaer-farbe);
 }
 
 .ff main > section:nth-of-type(3) > section {
@@ -878,9 +906,9 @@ meter::-webkit-meter-optimum-value {
   grid-template-columns: repeat(11, 1fr);
   grid-template-rows: repeat(4, auto) 1fr;
   border: solid 0.25rem var(--sekundaer-farbe);
-  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  border-radius: 0 var(--border-radius) var(--border-radius)
+    var(--border-radius);
   min-height: 65vh;
-  animation: in 0.5s ease-in-out forwards;
 }
 
 .ff main > section:nth-of-type(3) > section.active,
@@ -899,7 +927,7 @@ meter::-webkit-meter-optimum-value {
 .ff main > section:nth-of-type(3) .angebot p svg {
   height: 1.4rem;
   transform: translateY(0.2rem);
-  fill: var(--akzent-farbe-1);
+  fill: var(--sekundaer-farbe);
 }
 
 .ff main > section:nth-of-type(3) > section > h3,
@@ -952,8 +980,8 @@ meter::-webkit-meter-optimum-value {
 
 .ff main > section:nth-of-type(3) .angebot {
   border: 0.25rem solid var(--sekundaer-farbe);
-  padding: calc(var(--abstand) / 3);
-  border-radius: var(--border-radius);
+  padding: calc(var(--abstand) / 2.5);
+  border-radius: calc(var(--border-radius) / 2);
   display: grid;
   max-width: calc(33%);
   height: 75%;
@@ -1015,7 +1043,7 @@ meter::-webkit-meter-optimum-value {
   padding: 1rem 1.5rem;
   border: none;
   margin: 0;
-  background-color: var(--hintergrund-farbe);
+  background-color: inherit;
   border-top: 0.25rem solid var(--sekundaer-farbe);
   border-left: 0.25rem solid var(--sekundaer-farbe);
   cursor: pointer;
@@ -1023,22 +1051,17 @@ meter::-webkit-meter-optimum-value {
   transition: all 0.2s ease-in-out;
 }
 
-.ff main > section:nth-of-type(3) .tabs button:first-child {
-  border-top-left-radius: var(--border-radius);
-}
-
 .ff main > section:nth-of-type(3) .tabs button:last-child {
-  border-top-right-radius: var(--border-radius);
   border-right: 0.25rem solid var(--sekundaer-farbe);
 }
 
 .ff main > section:nth-of-type(3) .tabs button.active {
   border-color: var(--akzent-farbe-2);
   font-size: var(--subsubsection);
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
   border-right: 0.25rem solid var(--akzent-farbe-2);
   border-bottom: 0.25rem solid var(--akzent-farbe-2);
   transform: translateY(0.25rem);
+  z-index: 1;
 }
 
 .ff main > section:nth-of-type(3) .tabs button.active + button {
@@ -1310,7 +1333,7 @@ meter::-webkit-meter-optimum-value {
 .aus main > section:nth-child(3) > .text-wrapper section h3,
 .aus main > section:nth-child(2) > .text-wrapper section h3 {
   font-size: var(--subsection);
-  margin: calc(var(--abstand) / 2) 0 calc(var(--abstand) / 1.5) 0;
+  margin: calc(var(--abstand) / 2) 0 calc(var(--abstand) / 1.8) 0;
 }
 
 .aus main > section:nth-child(3) > .text-wrapper section p,
@@ -1436,7 +1459,7 @@ meter::-webkit-meter-optimum-value {
   grid-column: 1 / span 5;
   grid-row: 2;
   font-size: var(--subsection);
-  margin-bottom: calc(var(--abstand) / 1.5);
+  margin-bottom: calc(var(--abstand) / 1.8);
 }
 
 .aus main > section:nth-child(4) li {
