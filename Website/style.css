@@ -144,10 +144,13 @@ img {
   --abstand: 2rem;
   --spacer: calc(var(--abstand) * 6);
   --nav-hoehe: 5rem;
-  --border-radius: 0.5rem;
+  --border-radius: 3rem;
   --section: 2.313rem;
   --subsection: 1.75rem;
   --subsubsection: 1.313rem;
+  --lisection: 1.156rem;
+  --box-shadow: 4px 0px 35px #3f3f3f29;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -242,6 +245,8 @@ body > nav > a:first-child::after {
 a:not(.btn-link),
 .menu button {
   position: relative;
+  color: inherit;
+  text-decoration: none;
 }
 
 a:not(.btn-link)::after,
@@ -250,7 +255,7 @@ a:not(.btn-link)::after,
   bottom: 0;
   right: 0;
   width: 100%;
-  height: 0.2rem;
+  height: 0.25rem;
   transform: translateY(0.2rem);
   z-index: 1;
   content: " ";
@@ -371,6 +376,10 @@ body {
   background-size: cover;
 }
 
+#mehr-erfahren {
+  scroll-margin: calc(var(--nav-hoehe) + var(--abstand));
+}
+
 .btn-link {
   height: 3rem;
   display: grid;
@@ -379,7 +388,7 @@ body {
   background-color: var(--sekundaer-farbe);
   border-radius: 1.5rem;
   padding: 0 1.5rem;
-  margin: calc(var(--abstand) / 2) 0;
+  margin: calc(var(--abstand) / 1.5) 0;
 
   color: var(--hintergrund-farbe);
   text-decoration: none;
@@ -387,6 +396,16 @@ body {
 
 .btn-link:hover {
   background-color: var(--akzent-farbe-2);
+}
+
+.btn-link.special {
+  background-color: var(--hintergrund-farbe);
+  color: var(--text-farbe);
+  border: 0.25rem solid var(--sekundaer-farbe);
+}
+
+.btn-link.special:hover {
+  border-color: var(--akzent-farbe-2);
 }
 
 main {
@@ -399,8 +418,9 @@ main > section {
 
 blockquote {
   font-style: italic;
+  font-size: var(--subsubsection);
   max-width: 65ch;
-  margin: calc(var(--abstand) / 2) 0;
+  margin: calc(var(--abstand) / 1.5) 0;
   border-left: 0.25rem solid var(--akzent-farbe-2);
   padding-left: 1rem;
   margin-left: 2rem;
@@ -408,14 +428,17 @@ blockquote {
 
 h1 {
   font-size: var(--section);
+  margin: var(--abstand) 0;
 }
 
 h2 {
   font-size: var(--subsection);
+  margin: calc(var(--abstand) / 1.5) 0;
 }
 
 h3 {
   font-size: var(--subsubsection);
+  margin: calc(var(--abstand) / 2) 0;
 }
 
 h1,
@@ -454,8 +477,10 @@ h3 {
 
 .ff-sub {
   grid-template-rows:
-    30vh repeat(5, auto) var(--spacer) 40vh var(--spacer)
-    auto var(--spacer) auto;
+    30vh repeat(5, auto) var(--spacer) 45vh var(--spacer) calc(
+      var(--spacer) / 2
+    )
+    auto calc(var(--spacer) / 2) auto;
   grid-auto-rows: auto;
 }
 
@@ -474,35 +499,75 @@ h3 {
   grid-area: 2 / 2 / 3 / 6;
 }
 
-.ff-sub section:nth-of-type(1) h2 {
+.ff-sub main > section:nth-of-type(1) > p:first-of-type {
+  font-size: var(--section);
+  font-weight: 600;
   grid-area: 3 / 2 / 4 / 6;
+  font-family: "Raleway", var(--fallback-font);
+}
+
+.ff-sub section:nth-of-type(1) p svg {
+  fill: var(--akzent-farbe-1);
+  height: 1.9rem;
+  transform: translateY(0.3rem);
 }
 
 .ff-sub section:nth-of-type(1) .ff-meter {
   grid-area: 4 / 2 / 5 / 5;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--abstand) / 2);
+  font-size: var(--subsubsection);
 }
 
-.ff-sub section:nth-of-type(1) p {
+.ff-sub section:nth-of-type(1) .ff-meter #plaetze {
+  border: thin solid var(--text-farbe);
+  height: 1.9rem;
+  padding: 0;
+  margin: 0;
+  width: 11.4rem;
+}
+
+/* The gray background in Chrome, etc. */
+meter::-webkit-meter-bar {
+  background: var(--hintergrund-farbe);
+}
+
+/* The green (optimum) bar in Firefox */
+meter:-moz-meter-optimum::-moz-meter-bar {
+  background: var(--sekundaer-farbe);
+}
+
+/* The green (optimum) bar in Chrome etc. */
+meter::-webkit-meter-optimum-value {
+  background: var(--sekundaer-farbe);
+}
+
+/* https://stackoverflow.com/questions/8094835/how-to-style-html5-meter-tag  */
+
+.ff-sub main > section:nth-of-type(1) > .ff-sub-info-text {
   grid-area: 5 / 2 / 6 / 5;
+  margin-bottom: 0;
 }
 
-.ff-sub section:nth-of-type(1) .btn-link {
+.ff-sub main > section:nth-of-type(1) .btn-link {
   grid-area: 6 / 2 / 7 / 4;
 }
 
-.ff-sub section:nth-of-type(1) section {
-  grid-area: 2 / 8 / 7 / -3;
+.ff-sub main > section:nth-of-type(1) section {
+  grid-area: 2 / 8 / 7 / -2;
   background-color: var(--primaer-farbe);
   color: var(--text-farbe);
-  padding: var(--abstand);
+  padding: calc(var(--abstand) * 2);
   border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
 }
 
-.ff-sub section:nth-of-type(1) section :first-child {
+.ff-sub main > section:nth-of-type(1) section :first-child {
   margin-top: 0;
 }
 
-.ff-sub section:nth-of-type(1) section :last-child {
+.ff-sub main > section:nth-of-type(1) section :last-child {
   margin-bottom: 0;
 }
 
@@ -518,9 +583,21 @@ h3 {
   aspect-ratio: 1 / 1;
 }
 
-.ff-sub section:nth-of-type(1) section h2 {
+.ff-sub main > section:nth-of-type(1) section h2 {
   position: relative;
   padding-right: 2rem;
+  font-size: var(--section);
+}
+
+.ff-sub main > section:nth-of-type(1) section ul li {
+  margin-bottom: calc(var(--abstand) / 4);
+  font-size: var(--lisection);
+}
+
+.ff-sub main > section:nth-of-type(1) section p strong {
+  font-size: var(--section);
+  font-weight: 600;
+  font-family: "Raleway", var(--fallback-font);
 }
 
 /* Carrousel */
@@ -645,15 +722,30 @@ h3 {
 
 .ff-sub section:nth-of-type(3) {
   display: block;
-  grid-area: 10 / 3 / 11 / -3;
+  grid-area: 11 / 3 / 12 / -3;
+}
+
+#section-3-bg {
+  grid-area: 10 / 1 / 13 / -1;
+  background-color: var(--primaer-farbe);
+}
+.ff-sub section:nth-of-type(3) h2 {
+  font-size: var(--section);
+  margin-top: 0;
 }
 
 .ff-sub tr {
-  border-bottom: 1px solid #000;
+  border-bottom: thin solid var(--text-farbe);
+}
+
+.ff-sub td {
+  padding-top: calc(var(--abstand) / 4);
+  padding-bottom: calc(var(--abstand) / 4);
 }
 
 .ff-sub table {
   width: 100%;
+  font-size: var(--lisection);
 }
 
 .ff-sub table tr td:first-child {
@@ -1349,6 +1441,7 @@ h3 {
 
 .aus main > section:nth-child(4) li {
   margin-bottom: calc(var(--abstand) / 4);
+  font-size: var(--lisection);
 }
 
 .aus main > section:nth-child(4) > .text-wrapper {
