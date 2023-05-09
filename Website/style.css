@@ -1211,9 +1211,7 @@ meter::-webkit-meter-optimum-value {
     calc(var(--nav-hoehe) + var(--abstand) * 2) calc(
       100vh - var(--nav-hoehe) - var(--abstand) * 4
     )
-    var(--spacer) calc(85vh - var(--nav-hoehe)) var(--spacer) calc(
-      85vh - var(--nav-hoehe)
-    )
+    var(--spacer) minmax(85vh, auto) var(--spacer) minmax(85vh, auto)
     var(--spacer) auto var(--spacer) auto;
 }
 
