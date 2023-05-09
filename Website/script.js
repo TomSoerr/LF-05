@@ -106,102 +106,108 @@ if (tabBtnContainer != null) {
 
 // australien > slider
 
-const getUIElements = (
-  menuSelector,
-  buttonSelector,
-  contentSelector,
-  imageSelector
-) => {
-  const menuContainer = document.querySelectorAll(menuSelector);
-  const buttonsLeft = document.querySelector(buttonSelector + ":first-of-type");
-  const buttonsRight = document.querySelector(buttonSelector + ":last-of-type");
-  const contentContainer = document.querySelectorAll(contentSelector);
-  const images = document.querySelectorAll(imageSelector);
+if (document.querySelector("body.aus") != null) {
+  const getUIElements = (
+    menuSelector,
+    buttonSelector,
+    contentSelector,
+    imageSelector
+  ) => {
+    const menuContainer = document.querySelectorAll(menuSelector);
+    const buttonsLeft = document.querySelector(
+      buttonSelector + ":first-of-type"
+    );
+    const buttonsRight = document.querySelector(
+      buttonSelector + ":last-of-type"
+    );
+    const contentContainer = document.querySelectorAll(contentSelector);
+    const images = document.querySelectorAll(imageSelector);
 
-  const sliderObject = [];
+    const sliderObject = [];
 
-  for (const i in [...contentContainer]) {
-    const obj = {
-      id: i,
-      menu: menuContainer[i],
-      image: images[i],
-      content: contentContainer[i],
-      activate: function () {
-        const oldMenu = [...menuContainer].find((item) =>
-          item.classList.contains("active")
-        );
+    for (const i in [...contentContainer]) {
+      const obj = {
+        id: i,
+        menu: menuContainer[i],
+        image: images[i],
+        content: contentContainer[i],
+        activate: function () {
+          const oldMenu = [...menuContainer].find((item) =>
+            item.classList.contains("active")
+          );
 
-        oldMenu.classList.remove("active");
+          oldMenu.classList.remove("active");
 
-        const oldContent = [...contentContainer].find((item) =>
-          item.classList.contains("active")
-        );
+          const oldContent = [...contentContainer].find((item) =>
+            item.classList.contains("active")
+          );
 
-        oldContent.classList.remove("active");
-        oldContent.classList.add("fade-out");
+          oldContent.classList.remove("active");
+          oldContent.classList.add("fade-out");
 
-        const oldImage = [...images].find((item) =>
-          item.classList.contains("active")
-        );
+          const oldImage = [...images].find((item) =>
+            item.classList.contains("active")
+          );
 
-        oldImage.classList.remove("active");
-        oldImage.classList.add("fade-out");
+          oldImage.classList.remove("active");
+          oldImage.classList.add("fade-out");
 
-        setTimeout(() => {
-          oldContent.classList.remove("fade-out");
-          oldImage.classList.remove("fade-out");
+          setTimeout(() => {
+            oldContent.classList.remove("fade-out");
+            oldImage.classList.remove("fade-out");
 
-          this.image.classList.add("active");
-          this.content.classList.add("active");
-        }, 200);
-        this.menu.classList.add("active");
-      },
+            this.image.classList.add("active");
+            this.content.classList.add("active");
+          }, 200);
+          this.menu.classList.add("active");
+        },
+      };
+      menuContainer[i].addEventListener("click", obj.activate.bind(obj));
+
+      sliderObject.push(obj);
+    }
+
+    const left = () => {
+      const active = sliderObject.find((item) =>
+        item.content.classList.contains("active")
+      );
+      const index = sliderObject.indexOf(active);
+      if (index > 0) {
+        sliderObject[index - 1].activate();
+      } else {
+        sliderObject[sliderObject.length - 1].activate();
+      }
     };
-    menuContainer[i].addEventListener("click", obj.activate.bind(obj));
+    buttonsLeft.addEventListener("click", left);
 
-    sliderObject.push(obj);
-  }
+    const right = () => {
+      const active = sliderObject.find((item) =>
+        item.content.classList.contains("active")
+      );
 
-  const left = () => {
-    const active = sliderObject.find((item) =>
-      item.content.classList.contains("active")
-    );
-    const index = sliderObject.indexOf(active);
-    if (index > 0) {
-      sliderObject[index - 1].activate();
-    } else {
-      sliderObject[sliderObject.length - 1].activate();
-    }
+      const index = sliderObject.indexOf(active);
+      if (index < sliderObject.length - 1) {
+        sliderObject[index + 1].activate();
+      } else {
+        sliderObject[0].activate();
+      }
+    };
+    buttonsRight.addEventListener("click", right);
+
+    return [sliderObject, left, right];
   };
-  buttonsLeft.addEventListener("click", left);
 
-  const right = () => {
-    const active = sliderObject.find((item) =>
-      item.content.classList.contains("active")
-    );
+  const ausSlider1 = getUIElements(
+    ".aus main > section:nth-of-type(2) nav ul li button",
+    ".aus main > section:nth-of-type(2) > button",
+    ".aus main > section:nth-of-type(2) > .text-wrapper section",
+    ".aus main > section:nth-of-type(2) > .img-wrapper > div"
+  );
 
-    const index = sliderObject.indexOf(active);
-    if (index < sliderObject.length - 1) {
-      sliderObject[index + 1].activate();
-    } else {
-      sliderObject[0].activate();
-    }
-  };
-  buttonsRight.addEventListener("click", right);
-
-  return [sliderObject, left, right];
-};
-
-const ausSlider1 = getUIElements(
-  ".aus main > section:nth-of-type(2) nav ul li button",
-  ".aus main > section:nth-of-type(2) > button",
-  ".aus main > section:nth-of-type(2) > .text-wrapper section",
-  ".aus main > section:nth-of-type(2) > .img-wrapper > div"
-);
-
-const ausSlider2 = getUIElements(
-  ".aus main > section:nth-of-type(3) nav ul li button",
-  ".aus main > section:nth-of-type(3) > button",
-  ".aus main > section:nth-of-type(3) > .text-wrapper section",
-  ".aus main > section:nth-of-type(3) > .img-wrapper > div"
-);
+  const ausSlider2 = getUIElements(
+    ".aus main > section:nth-of-type(3) nav ul li button",
+    ".aus main > section:nth-of-type(3) > button",
+    ".aus main > section:nth-of-type(3) > .text-wrapper section",
+    ".aus main > section:nth-of-type(3) > .img-wrapper > div"
+  );
+}
