@@ -390,7 +390,7 @@ body {
   border-radius: 1.5rem;
   padding: 0 1.5rem;
   margin: calc(var(--abstand) / 1.8) 0;
-
+  font-size: var(--lisection);
   color: var(--hintergrund-farbe);
   text-decoration: none;
 }
@@ -872,17 +872,19 @@ meter::-webkit-meter-optimum-value {
 }
 
 .ff main > section:nth-of-type(2) #ff-slider #ff-slider-img-1 {
-  background-color: #d48c8c;
-  background-image: linear-gradient(50deg, #d48c8c 0%, #a0d3de 100%);
+  background-image: url(./img/ff-slider-img-4.jpg);
 }
 
 .ff main > section:nth-of-type(2) #ff-slider #ff-slider-img-2 {
-  background-color: #d48c8c;
-  background-image: linear-gradient(100deg, #d48c8c 0%, #a0d3de 100%);
+  background-image: url(./img/ff-slider-img-1.jpg);
 }
+
 .ff main > section:nth-of-type(2) #ff-slider #ff-slider-img-3 {
-  background-color: #d48c8c;
-  background-image: linear-gradient(200deg, #d48c8c 0%, #a0d3de 100%);
+  background-image: url(./img/ff-slider-img-2.jpg);
+}
+
+.ff main > section:nth-of-type(2) #ff-slider #ff-slider-img-4 {
+  background-image: url(./img/ff-slider-img-3.jpg);
 }
 
 .ff main > section:nth-of-type(2) .img-btn:last-of-type {
@@ -937,6 +939,8 @@ meter::-webkit-meter-optimum-value {
   border-radius: 0 var(--border-radius) var(--border-radius)
     var(--border-radius);
   min-height: 65vh;
+  box-shadow: var(--box-shadow);
+  background-color: var(--hintergrund-farbe);
 }
 
 .ff main > section:nth-of-type(3) > section.active,
@@ -962,13 +966,13 @@ meter::-webkit-meter-optimum-value {
 .ff main > section:nth-of-type(3) > section > p,
 .ff main > section:nth-of-type(3) > section > a {
   grid-column: 1 / 5;
-  margin: 0 0 0 calc(var(--abstand) / 2);
+  margin: 0 0 0 var(--abstand);
 }
 
 .ff main > section:nth-of-type(3) > section > h3 {
   font-size: var(--subsection);
   font-weight: 400;
-  margin-top: calc(var(--abstand) / 2);
+  margin-top: var(--abstand);
 }
 
 .ff main > section:nth-of-type(3) > section > p:first-of-type {
@@ -984,7 +988,7 @@ meter::-webkit-meter-optimum-value {
 
 .ff main > section:nth-of-type(3) > section > p.info {
   grid-area: 1 / 9 / span 2 / span 4;
-  margin: calc(var(--abstand) / 2) calc(var(--abstand) / 2) 0 0;
+  margin: var(--abstand) var(--abstand) 0 0;
   position: relative;
 }
 
@@ -1071,29 +1075,15 @@ meter::-webkit-meter-optimum-value {
   padding: 1rem 1.5rem;
   border: none;
   margin: 0;
-  background-color: inherit;
-  border-top: 0.25rem solid var(--sekundaer-farbe);
-  border-left: 0.25rem solid var(--sekundaer-farbe);
-  cursor: pointer;
+  background-color: var(--sekundaer-farbe);
+  color: var(--hintergrund-farbe);
   font-size: 1rem;
   transition: all 0.2s ease-in-out;
 }
 
-.ff main > section:nth-of-type(3) .tabs button:last-child {
-  border-right: 0.25rem solid var(--sekundaer-farbe);
-}
-
 .ff main > section:nth-of-type(3) .tabs button.active {
-  border-color: var(--akzent-farbe-2);
+  background-color: var(--akzent-farbe-2);
   font-size: var(--subsubsection);
-  border-right: 0.25rem solid var(--akzent-farbe-2);
-  border-bottom: 0.25rem solid var(--akzent-farbe-2);
-  transform: translateY(0.25rem);
-  z-index: 1;
-}
-
-.ff main > section:nth-of-type(3) .tabs button.active + button {
-  border-left: none;
 }
 
 .ff main > section:nth-of-type(3) .tabs {
