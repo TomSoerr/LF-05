@@ -5,7 +5,7 @@ setTimeout(function () {
 // index boder radius
 
 const images = document.querySelectorAll(
-  '.ix section:nth-child(1) [role="img"]'
+  '.ix section:nth-of-type(1) [role="img"]'
 );
 
 const setRadius = (image) => {
@@ -193,15 +193,15 @@ const getUIElements = (
 };
 
 const ausSlider1 = getUIElements(
-  ".aus main > section:nth-child(2) nav ul li button",
-  ".aus main > section:nth-child(2) > button",
-  ".aus main > section:nth-child(2) > .text-wrapper section",
-  ".aus main > section:nth-child(2) > .img-wrapper > div"
+  ".aus main > section:nth-of-type(2) nav ul li button",
+  ".aus main > section:nth-of-type(2) > button",
+  ".aus main > section:nth-of-type(2) > .text-wrapper section",
+  ".aus main > section:nth-of-type(2) > .img-wrapper > div"
 );
 
 const ausSlider2 = getUIElements(
-  ".aus main > section:nth-child(3) nav ul li button",
-  ".aus main > section:nth-child(3) > button",
-  ".aus main > section:nth-child(3) > .text-wrapper section",
-  ".aus main > section:nth-child(3) > .img-wrapper > div"
+  ".aus main > section:nth-of-type(3) nav ul li button",
+  ".aus main > section:nth-of-type(3) > button",
+  ".aus main > section:nth-of-type(3) > .text-wrapper section",
+  ".aus main > section:nth-of-type(3) > .img-wrapper > div"
 );
