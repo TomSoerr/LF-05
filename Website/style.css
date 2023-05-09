@@ -813,15 +813,12 @@ meter::-webkit-meter-optimum-value {
 
 .ff main > section:nth-of-type(1) #ff-hero-img-1 {
   grid-area: 2 / 7 / 5 / 10;
-
-  background-color: #d48c8c;
-  background-image: linear-gradient(62deg, #d48c8c 0%, #a0d3de 100%);
+  background-image: url(./img/ff-hero-img-1.jpg);
 }
 
 .ff main > section:nth-of-type(1) #ff-hero-img-2 {
   grid-area: 3 / 10 / 6 / 13;
-  background-color: #d48c8c;
-  background-image: linear-gradient(62deg, #d48c8c 0%, #a0d3de 100%);
+  background-image: url(./img/ff-hero-img-2.jpg);
 }
 
 .ff main > section:nth-of-type(2) > * {
@@ -1239,8 +1236,9 @@ meter::-webkit-meter-optimum-value {
 
 .aus {
   grid-template-rows:
-    calc(var(--nav-hoehe) + var(--abstand) * 2) calc(
-      100vh - var(--nav-hoehe) - var(--abstand) * 4
+    calc(var(--nav-hoehe) + var(--abstand) * 2) minmax(
+      calc(100vh - var(--nav-hoehe) - var(--abstand) * 4),
+      auto
     )
     var(--spacer) minmax(85vh, auto) var(--spacer) calc(var(--spacer) / 2) minmax(
       85vh,
@@ -1257,12 +1255,13 @@ meter::-webkit-meter-optimum-value {
 .aus #hero-bg {
   grid-area: 1 / 1 / 3 / 10;
   background-color: var(--primaer-farbe);
-  margin-bottom: var(--spacer);
+  margin-bottom: calc(var(--spacer) - var(--abstand));
 }
 
 .aus main > section:nth-of-type(1) > div:not(#aus-hero-img) {
   grid-area: 2 / 2 / 3 / 6;
   margin-top: var(--abstand);
+  margin-bottom: var(--spacer);
 }
 
 .aus main > section:nth-of-type(1) > div:not(#aus-hero-img) h1 {
