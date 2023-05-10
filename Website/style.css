@@ -906,6 +906,19 @@ meter::-webkit-meter-optimum-value {
 
 .ff main > section:nth-of-type(2) .ff-section-text h2 {
   margin-bottom: calc(var(--abstand) / 1.8);
+  position: relative;
+}
+
+.ff main > section:nth-of-type(2) .ff-section-text h2.active::before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 0;
+  width: 0.6rem;
+  transform: translate(-1.2rem, -50%);
+  height: 90%;
+  background-color: var(--akzent-farbe-2);
 }
 
 .ff main > section:nth-of-type(2) .ff-section-text p {

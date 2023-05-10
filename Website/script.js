@@ -35,6 +35,9 @@ const sliders = [
     slider: document.querySelector(".ff #ff-slider"),
     leftArrow: document.querySelector(".ff .img-btn:first-of-type"),
     rightArrow: document.querySelector(".ff .img-btn:last-of-type"),
+    linkedContent: document.querySelector(
+      ".ff main > section:nth-of-type(2) .ff-section-text"
+    ),
   },
   {
     // ferienfreizeiten > segeln und biken > carrousel slider
@@ -45,16 +48,37 @@ const sliders = [
 ];
 
 sliders.forEach((sliderObj) => {
-  const [slider, leftArrow, rightArrow] = Object.values(sliderObj);
+  const [slider, leftArrow, rightArrow, linkedContent] =
+    Object.values(sliderObj);
+
+  const setActiveContent = (slider, linkedContent) => {
+    [...linkedContent.children]
+      .find((item) => item.classList.contains("active"))
+      .classList.remove("active");
+
+    [...linkedContent.children]
+      .find((item) => item.className === "btn-link")
+      .classList.add("special");
+
+    linkedContent.children[
+      3 * slider.children[1].getAttribute("data-number") - 3
+    ].classList.add("active");
+
+    linkedContent.children[
+      3 * slider.children[1].getAttribute("data-number") - 1
+    ].classList.remove("special");
+  };
+
   if (slider != null) {
     rightArrow.addEventListener("click", () => {
-      sliderSliding = true;
       slider.classList.add("right");
       const first = slider.firstElementChild;
       setTimeout(() => {
         slider.appendChild(first);
         slider.classList.remove("right");
-        sliderSliding = false;
+        if (linkedContent != null) {
+          setActiveContent(slider, linkedContent);
+        }
       }, 500);
     });
 
@@ -65,7 +89,9 @@ sliders.forEach((sliderObj) => {
       setTimeout(() => {
         slider.insertBefore(last, first);
         slider.classList.remove("left");
-        sliderSliding = false;
+        if (linkedContent != null) {
+          setActiveContent(slider, linkedContent);
+        }
       }, 500);
     });
   }
