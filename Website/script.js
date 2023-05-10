@@ -237,3 +237,56 @@ if (document.querySelector("body.aus") != null) {
     ".aus main > section:nth-of-type(3) > .img-wrapper > div"
   );
 }
+
+// english button
+if (document.querySelector("body.ix") == null) {
+  const englishBtn = document.querySelector(
+    'body > nav li span[role="button"]:first-of-type'
+  );
+  const germanBtn = document.querySelector(
+    'body > nav li span[role="button"]:last-of-type'
+  );
+
+  [englishBtn, germanBtn].forEach((item) => {
+    item.addEventListener("click", () => {
+      const response = confirm(
+        "This function is only available on the homepage. Do you want to go to the homepage?"
+      );
+
+      if (response) {
+        location.assign("/index.html");
+      }
+    });
+
+    germanBtn.addEventListener("click", () => {});
+  });
+}
+
+if (document.querySelector("body.ix") != null) {
+  const englishBtn = document.querySelector(
+    'body > nav li span[role="button"]:first-of-type'
+  );
+  const germanBtn = document.querySelector(
+    'body > nav li span[role="button"]:last-of-type'
+  );
+
+  englishBtn.addEventListener("click", () => {
+    englishBtn.classList.add("active");
+    germanBtn.classList.remove("active");
+    const url = window.location.href.match(
+      /^(?<prefix>.*)\.html(?<suffix>.*)$/
+    ).groups;
+
+    location.assign(`${url.prefix}-en.html${url.suffix}`);
+  });
+
+  germanBtn.addEventListener("click", () => {
+    germanBtn.classList.add("active");
+    englishBtn.classList.remove("active");
+    const url = window.location.href.match(
+      /^(?<prefix>.*)-en\.html(?<suffix>.*)$/
+    ).groups;
+
+    location.assign(`${url.prefix}.html${url.suffix}`);
+  });
+}
