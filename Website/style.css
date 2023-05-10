@@ -1222,7 +1222,7 @@ meter::-webkit-meter-optimum-value {
   aspect-ratio: 1;
   margin-top: var(--abstand);
 
-  background-image: url("./img/openmap.png");
+  background-image: url("./img/openmap.jpg");
 }
 
 /* Home > .ix */
