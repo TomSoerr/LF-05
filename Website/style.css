@@ -184,6 +184,7 @@ body > nav {
   width: 100%;
   font-family: "Raleway", var(--fallback-font);
   font-weight: 400;
+  font-size: var(--lisection);
   z-index: 2;
 }
 
@@ -201,6 +202,10 @@ body > nav > ul {
 body > nav li {
   list-style: none;
   position: relative;
+}
+
+body > nav li span[role="button"].active {
+  color: var(--akzent-farbe-2);
 }
 
 body > nav a {
