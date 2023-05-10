@@ -60,7 +60,7 @@
     </nav>
     <main>
       <section>
-        <div id="k-hero-img" role="img" aria-label="alt text"></div>
+        <div id="k-hero-img"></div>
         <h1>Dein Draht zu uns</h1>
         <div>
           <p>
@@ -72,11 +72,10 @@
             Schreib uns eine Email
           </a>
         </div>
-        <div id="k-main-img" role="img" aria-label="alt text"></div>
       </section>
       <section>
         <address>
-          My GLobe <br />
+          MyGLobe <br />
           Stresemannallee 125 <br />
           20259 Hamburg <br />
           Telefon (0 40) 33 30 35- 0 <br />
@@ -91,12 +90,80 @@
           aria-label="Karte mit Standorten von MyGlobe"
         ></div>
       </section>
+      <section>
+        <form method="post" action="/api/v1">
+          <h2>Deine Nachricht an uns</h2>
+          <label
+            >Betreff <br />
+            <select required name="betreff">
+              <option selected disabled value="">Betreff auswählen</option>
+              <option value="Schueleraustausch">Schueleraustausch</option>
+              <option value="Ferienfreizeiten">Ferienfreizeiten</option>
+              <option value="Travel and Work">Travel and Work</option>
+              <option value="Sonstige Fragen">Sonstige Fragen</option>
+            </select>
+          </label>
+
+          <label
+            >Anrede <br />
+            <select name="anrede">
+              <option value="keine-angabe">Keine Angabe</option>
+              <option value="Herr">Herr</option>
+              <option value="Frau">Frau</option>
+            </select>
+          </label>
+
+          <label
+            >E-Mail <br />
+            <input placeholder=" " required type="email" name="email" />
+          </label>
+
+          <label
+            >Nachricht <br />
+            <textarea required name="message" cols="30" rows="10"></textarea>
+          </label>
+          <button class="btn-link">Absenden</button>
+        </form>
+      </section>
     </main>
     <footer>
-      <ul>
-        <li><a href="./impressum.html">Impressum</a></li>
-        <li><a href="./kontakt.html">Kontakt</a></li>
-      </ul>
+      <div class="text-wrapper">
+        <h3><a href="./impressum.html">Impressum</a></h3>
+        <p>ANGABEN GEMÄSS §5 TELEMEDIENGESETZ (TMG)</p>
+        <address>
+          <ul>
+            <li>MyGLobe</li>
+            <li>Stresemannallee 125</li>
+            <li>20259 Hamburg</li>
+            <li>Telefon (0 40) 33 30 35- 0</li>
+            <li>Telefax (0 40) 33 30 33-100</li>
+            <li>E-Mail: info@MyGlobe.de</li>
+            <li>www.MyGlobe.de</li>
+          </ul>
+        </address>
+      </div>
+      <div class="text-wrapper">
+        <h3><a href="./kontakt.html">Kontakt</a></h3>
+        <address>
+          <ul>
+            <li>MyGLobe</li>
+            <li>Stresemannallee 125</li>
+            <li>20259 Hamburg</li>
+            <li>Telefon (0 40) 33 30 35- 0</li>
+            <li>Telefax (0 40) 33 30 33-100</li>
+            <li>E-Mail: info@MyGlobe.de</li>
+            <li>www.MyGlobe.de</li>
+          </ul>
+        </address>
+      </div>
+      <div class="text-wrapper">
+        <h3>Socialmedia</h3>
+        <ul>
+          <li><a href="">Instagram</a></li>
+          <li><a href="">Xing</a></li>
+          <li><a href="">Linkedin</a></li>
+        </ul>
+      </div>
     </footer>
   </body>
 </html>
