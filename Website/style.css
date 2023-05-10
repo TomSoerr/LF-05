@@ -208,6 +208,10 @@ body > nav li span[role="button"].active {
   color: var(--akzent-farbe-2);
 }
 
+body > nav li span[role="button"] {
+  cursor: pointer;
+}
+
 body > nav a {
   color: var(--hintergrund-farbe);
   text-decoration: none;
@@ -240,6 +244,7 @@ body > nav li:hover > a + ul {
 
 body > nav a:first-child {
   margin-right: auto;
+  display: flex;
 }
 
 body > nav > a:first-child::after {
@@ -375,11 +380,16 @@ body {
   column-gap: var(--abstand);
   color: var(--text-farbe);
   background-color: var(--hintergrund-farbe);
+  overflow-x: hidden;
 }
 
 [role="img"] {
   background-position: center;
   background-size: cover;
+}
+
+:not(section.angebot) > [role="img"] {
+  box-shadow: var(--box-shadow);
 }
 
 #mehr-erfahren {
@@ -1120,7 +1130,7 @@ meter::-webkit-meter-optimum-value {
 /* Kontakt -> .kt*/
 
 .kt {
-  grid-template-rows: 30vh repeat(4, auto) calc(var(--abstand) * 3) auto;
+  grid-template-rows: 30vh repeat(4, auto) calc(var(--spacer) / 2) auto;
 }
 
 .kt section:nth-of-type(1) #k-hero-img {
@@ -1219,37 +1229,69 @@ meter::-webkit-meter-optimum-value {
 
 .ix {
   grid-template-rows:
-    calc(var(--nav-hoehe) + var(--abstand) * 2) calc(
-      50vh - var(--nav-hoehe) - var(--abstand) * 2
+    calc(var(--nav-hoehe) + var(--abstand) * 2) minmax(
+      calc(50vh - var(--nav-hoehe) - var(--abstand) * 2),
+      auto
     )
-    calc(50vh - var(--abstand) * 2)
-    var(--spacer) 50vh var(--spacer) 50vh var(--spacer) 50vh var(--spacer) auto;
+    minmax(calc(50vh - var(--abstand) * 2), auto)
+    var(--spacer) minmax(75vh, auto) var(--spacer) calc(var(--spacer) / 2) minmax(
+      75vh,
+      auto
+    )
+    calc(var(--spacer) / 2) var(--spacer)
+    minmax(75vh, auto) var(--spacer) auto;
 }
 
-.ix section:nth-of-type(1) h1 {
-  grid-area: 2 / 6 / 3 / 10;
-  font-size: calc(2 * var(--section));
+.ix section:nth-of-type(1) .hero-text {
+  grid-area: 2 / 5 / 3 / 11;
+  padding-left: var(--abstand);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.ix section:nth-of-type(1) .hero-text h1 {
   margin: 0;
+  font-size: calc(2.5 * var(--section));
+  margin-bottom: var(--abstand);
 }
 
 .ix section:nth-of-type(1) #ix-hero-img-1 {
   grid-area: 2 / 2 / 3 / 5;
-
-  background: linear-gradient(-10deg, #ded4c5 20%, #fffefa 100%);
+  background-image: url(./img/ix-hero-img-1.jpg);
 }
+
 .ix section:nth-of-type(1) #ix-hero-img-2 {
   grid-area: 2 / 11 / 3 / -2;
   height: 75%;
   margin-top: 25%;
-  background: linear-gradient(-10deg, #ded4c5 20%, #fffefa 100%);
+  background-image: url(./img/ix-hero-img-2.jpg);
 }
+
 .ix section:nth-of-type(1) #ix-hero-img-3 {
-  grid-area: 3 / 5 / 4 / 7;
-  background: linear-gradient(-10deg, #ded4c5 20%, #fffefa 100%);
+  grid-area: 3 / 4 / 4 / 7;
+  background-image: url(./img/ix-hero-img-3.jpg);
 }
+
 .ix section:nth-of-type(1) #ix-hero-img-4 {
-  grid-area: 3 / 8 / 4 / 10;
-  background: linear-gradient(-10deg, #ded4c5 20%, #fffefa 100%);
+  grid-area: 3 / 9 / 4 / 12;
+  background-image: url(./img/ix-hero-img-4.jpg);
+}
+
+.ix section:nth-of-type(1) #ix-hero-img-5 {
+  grid-area: 4 / 2 / 6 / 4;
+  background-image: url(./img/ix-hero-img-5.jpg);
+  transform: translateY(calc(var(--abstand) * -1));
+}
+
+.ix section:nth-of-type(1) [role="img"] {
+  aspect-ratio: 1;
+}
+
+.ix section:nth-of-type(1) a {
+  grid-area: 3 / 7 / 4 / 9;
+  place-self: end center;
+  font-size: var(--subsection);
+  font-family: "Raleway", sans-serif;
 }
 
 .ix section:not(:first-child) div[role="img"]:first-child {
@@ -1272,7 +1314,11 @@ meter::-webkit-meter-optimum-value {
 
 .ix section:not(:first-child) div:not([role="img"]) {
   align-self: start;
-  max-width: 65ch;
+  max-width: 50ch;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
 }
 
 .ix section:nth-of-type(2) > * {
@@ -1280,21 +1326,27 @@ meter::-webkit-meter-optimum-value {
 }
 
 .ix section:nth-of-type(3) > * {
-  grid-row: 7;
+  grid-row: 8;
 }
 
 .ix section:nth-of-type(4) > * {
-  grid-row: 9;
+  grid-row: 11;
+}
+
+.ix #section-bg {
+  background-color: var(--primaer-farbe);
+  grid-area: 7 / 1 / 10 / -1;
 }
 
 .ix section #ix-section-img-1 {
-  background: linear-gradient(-10deg, #ded4c5 20%, #fffefa 100%);
+  background-image: url(./img/ix-section-1.jpg);
 }
+
 .ix section #ix-section-img-2 {
-  background: linear-gradient(-10deg, #ded4c5 20%, #fffefa 100%);
+  background-image: url(./img/ix-section-2.jpg);
 }
 .ix section #ix-section-img-3 {
-  background: linear-gradient(-10deg, #ded4c5 20%, #fffefa 100%);
+  background-image: url(./img/ix-section-3.jpg);
 }
 
 /* Australien -> .aus */
