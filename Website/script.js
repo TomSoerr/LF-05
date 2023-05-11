@@ -239,28 +239,6 @@ if (document.querySelector("body.aus") != null) {
 }
 
 // english button
-if (document.querySelector("body.ix") == null) {
-  const englishBtn = document.querySelector(
-    'body > nav li span[role="button"]:first-of-type'
-  );
-  const germanBtn = document.querySelector(
-    'body > nav li span[role="button"]:last-of-type'
-  );
-
-  [englishBtn, germanBtn].forEach((item) => {
-    item.addEventListener("click", () => {
-      const response = confirm(
-        "This function is only available on the homepage. Do you want to go to the homepage?"
-      );
-
-      if (response) {
-        location.assign("/index.html");
-      }
-    });
-
-    germanBtn.addEventListener("click", () => {});
-  });
-}
 
 if (document.querySelector("body.ix") != null) {
   const englishBtn = document.querySelector(
@@ -288,5 +266,27 @@ if (document.querySelector("body.ix") != null) {
     ).groups;
 
     location.assign(`${url.prefix}.html${url.suffix}`);
+  });
+} else {
+  console.log("not on index");
+  const englishBtn = document.querySelector(
+    'body > nav li span[role="button"]:first-of-type'
+  );
+  const germanBtn = document.querySelector(
+    'body > nav li span[role="button"]:last-of-type'
+  );
+
+  [englishBtn, germanBtn].forEach((item) => {
+    item.addEventListener("click", () => {
+      const response = confirm(
+        "This function is only available on the homepage. Do you want to go to the homepage?"
+      );
+
+      if (response) {
+        location.assign("/index.html");
+      }
+    });
+
+    germanBtn.addEventListener("click", () => {});
   });
 }
