@@ -4,9 +4,7 @@ setTimeout(function () {
 
 // index boder radius
 
-const images = document.querySelectorAll(
-  '.ix section:nth-of-type(1) [role="img"]'
-);
+const images = document.querySelectorAll('.ix header [role="img"]');
 
 const setRadius = (image) => {
   const width = image.getBoundingClientRect().width;
@@ -36,7 +34,7 @@ const sliders = [
     leftArrow: document.querySelector(".ff .img-btn:first-of-type"),
     rightArrow: document.querySelector(".ff .img-btn:last-of-type"),
     linkedContent: document.querySelector(
-      ".ff main > section:nth-of-type(2) .ff-section-text"
+      ".ff main > section:nth-of-type(1) .ff-section-text"
     ),
   },
   {
@@ -101,7 +99,7 @@ sliders.forEach((sliderObj) => {
 
 const tabBtnContainer = document.querySelector(".ff .tabs");
 const tabContentContainer = document.querySelectorAll(
-  ".ff main > section:nth-of-type(3) > section"
+  ".ff main > section:nth-of-type(2) > section"
 );
 
 if (tabBtnContainer != null) {
@@ -224,17 +222,17 @@ if (document.querySelector("body.aus") != null) {
   };
 
   const ausSlider1 = getUIElements(
+    ".aus main > section:nth-of-type(1) nav ul li button",
+    ".aus main > section:nth-of-type(1) > button",
+    ".aus main > section:nth-of-type(1) > .text-wrapper section",
+    ".aus main > section:nth-of-type(1) > .img-wrapper > div"
+  );
+
+  const ausSlider2 = getUIElements(
     ".aus main > section:nth-of-type(2) nav ul li button",
     ".aus main > section:nth-of-type(2) > button",
     ".aus main > section:nth-of-type(2) > .text-wrapper section",
     ".aus main > section:nth-of-type(2) > .img-wrapper > div"
-  );
-
-  const ausSlider2 = getUIElements(
-    ".aus main > section:nth-of-type(3) nav ul li button",
-    ".aus main > section:nth-of-type(3) > button",
-    ".aus main > section:nth-of-type(3) > .text-wrapper section",
-    ".aus main > section:nth-of-type(3) > .img-wrapper > div"
   );
 }
 
@@ -268,7 +266,6 @@ if (document.querySelector("body.ix") != null) {
     location.assign(`${url.prefix}.html${url.suffix}`);
   });
 } else {
-  console.log("not on index");
   const englishBtn = document.querySelector(
     'body > nav li span[role="button"]:first-of-type'
   );
