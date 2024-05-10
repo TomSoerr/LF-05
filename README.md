@@ -2,6 +2,10 @@
 
 In diesem Lehrnfeld sollten wir für den fiktiven Kunden MyGlobe eine statische Website erstellen. In einer kleinen Gruppe haben wir ein Konzept geschrieben, Styletile, Wireframes und Mockups erstellt und die Website mit HTML, CSS und JavaScript umgesetzt.
 
+## Links
+
+- [Impressum](https://tomsoerr.github.io/#/impressum)
+
 ## Quellen Fotos
 
 - [Unsplash](https://unsplash.com/de/fotos/fDostElVhN8)
